@@ -1,0 +1,145 @@
+
+.logoBar{
+    background: rgb(239, 242, 244);
+    margin-left: 2rem;
+    margin-right: 2rem;
+    height: 5rem;
+    text-align: center;
+    font-size: 50px;
+    padding-top: 1rem;
+    color: rgb(21, 121, 171);
+    box-shadow: 1px 1px 5px  rgb(163, 174, 200);
+}
+.posters{
+    margin-top: 1.5rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    background: rgb(239, 242, 244);
+    height: 25rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 2rem;
+    box-shadow: 1px 1px 5px  rgb(163, 174, 200);
+
+
+}
+.left-side-poster{
+    width: 10%;
+    background: rgb(99, 121, 167);
+}
+.right-side-poster{
+    width: 10%;
+    background: rgb(99, 121, 167);
+}
+.middle-side-poster{
+    width: 75%;
+    background: rgb(170, 183, 210);
+}
+.servises{
+    margin-left: 1rem;
+    margin-right: 1rem;
+    margin-top: 1.5rem;
+    background: rgb(239, 242, 244);
+    height:25rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 2rem;
+    box-shadow: 1px 1px 5px  rgb(163, 174, 200);
+
+
+}
+.cards{
+    width: 29%;
+    border-radius: 2rem;
+    background: rgb(99, 121, 167);
+}
+.doctor-cards{
+    width: 19%;
+    background: rgb(99, 121, 167);
+    border-radius: 20rem;
+}
+.doctors{
+    margin-left: 1rem;
+    margin-right: 1rem;
+    margin-top: 1.5rem;
+    background: rgb(239, 242, 244);
+    height:25rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 2rem;
+        box-shadow: 1px 1px 5px  rgb(163, 174, 200);
+
+
+}
+.healthAdvices{
+    margin-left: 1rem;
+    margin-right: 1rem;
+    margin-top: 1.5rem;
+    background: rgb(239, 242, 244);
+    height: 50rem;
+    background: rgb(239, 242, 244);
+        box-shadow: 1px 1px 5px  rgb(163, 174, 200);
+
+
+}
+.testimonials{
+    margin-left: 1rem;
+    margin-right: 1rem;
+    margin-top: 1.5rem;
+    background: rgb(239, 242, 244);
+    height: 25rem;
+    background: rgb(239, 242, 244);
+    box-shadow: 1px 1px 5px  rgb(163, 174, 200);
+}
+
+@media screen and (max-width: 992px) {
+    .left-side-poster{
+        width: 2%;
+        background: rgb(99, 121, 167);
+    }
+    .middle-side-poster{
+        width: 90%;
+        background: rgb(170, 183, 210);
+    }
+    .right-side-poster{
+        width: 2%;
+        background: rgb(99, 121, 167);
+    }
+    .servises{
+        margin-left: 1rem;
+        margin-right: 1rem;
+        margin-top: 1.5rem;
+        background: rgb(239, 242, 244);
+        height:100rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 2rem;
+        align-items: center;
+    }
+    .cards{
+        height: 28%;
+        width: 90%;
+        background: rgb(99, 121, 167);
+    }
+    .doctors{
+        margin-left: 1rem;
+        margin-right: 1rem;
+        margin-top: 1.5rem;
+        background: rgb(239, 242, 244);
+        height:100rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 2rem;
+        align-items: center;
+    }
+    .doctor-cards{
+        height: 18%;
+        width: 80%;
+        background: rgb(99, 121, 167);
+    }
+}
