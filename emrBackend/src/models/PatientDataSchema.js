@@ -78,17 +78,17 @@ const patientShema = mongoose.Schema({
             type:String,
             required:true,
         },
-        DiseaseCategoriy:{
+        Category:{
             type:String,
             required:true,
         },
-        AdmittedTime:{
-            type:Date,
-            required:true,
+        DiagnosisTime:{
+            type:String,
+            default: Date(Date.now()).toString().slice(16,24),
         },
-        AdmittedDate:{
-            type:Date,
-            required:true,
+        DiagnosisDate:{
+            type:String,
+            default: Date(Date.now()).toString().slice(0,15),
         }
     },
     other:{

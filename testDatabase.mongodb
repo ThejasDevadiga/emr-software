@@ -1,24 +1,22 @@
 
 use('test');
 
-
-// db.sales.insertOne({
-//     key:{
-//         PateintID:"abs1234",
-//     },
-//     basic:{
-//         Fname:"fname",
-//         Mname:"Thej",
-//         Lname: "dfgdf",
-//         DateOfBirth:"34345345"
-//     }
-// })
-db.sales.find({
-    key:{
-        PateintID:"abs1234"
+// db,sales,drop()
+db.sales.insertOne({
+    PateintID:"dddddd",
+    basic:{
+        Fname:"c",
+        Mname:"dc",
+        Lname: "sd",
+        DateOfBirth:Date(Date.now()).toString().slice(0,15)
     }
-},
-{basic:{
-    Fname:1
-}}
-)
+})
+
+
+// db.sales.find({
+//  PateintID:"abs123 4"
+// },
+// {basic:{
+//     Fname:1
+// }}
+// )
