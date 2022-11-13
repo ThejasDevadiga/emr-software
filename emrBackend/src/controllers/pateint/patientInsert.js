@@ -5,7 +5,7 @@ const asyncHandler = require("express-async-handler");
 
 const insertPatientData = asyncHandler(async (req, res) => {
     const { 
-      requestId,
+      requestedId,
         PatientId,
         Fname,
         Mname,
@@ -31,9 +31,10 @@ const insertPatientData = asyncHandler(async (req, res) => {
       res.status(403).json({
         acknowledged : true,
         message : 'Patient already exists',
-        token : generateToken(requestId)
+        token : generateToken(requestedId)
       })
     }
+    try{
     const result = await PatientShema.inserOne({
         PatientId: generateId('PAT'),
         Basic:{
@@ -63,15 +64,22 @@ const insertPatientData = asyncHandler(async (req, res) => {
     });
     if (result) {
       res.status(201).json({
-        _id: result._id,
         acknowledged: true,
         PatientId: result.PatientId,
-        token:generateToken(requestId)
+        message:"Data inserted successfully",
+        token:generateToken(requestedId)
       });
     } else {
       res.status(400).json({
         acknowledged : true,
-        token:generateToken(requestId),
+        token:generateToken(requestedId),
+        message : "Error while inserting data"
+      })
+    }
+    }catch(err){
+      res.status(400).json({
+        acknowledged : true,
+        token:generateToken(requestedId),
         message : err.message
       })
     }
