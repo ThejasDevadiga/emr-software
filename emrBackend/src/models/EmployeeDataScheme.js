@@ -1,12 +1,12 @@
 const mongoose = require('mongoose');
 const employeeShema = mongoose.Schema({
+    EmployeeID:{
+        type:String,
+        required:true,
+        unique:true
+    },
     Basic:
     {
-        EmployeeID:{
-            type:String,
-            required:true,
-            unique:true
-        },
         Fname: {
             type: String,
             required: true,

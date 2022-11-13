@@ -1,0 +1,24 @@
+
+use('test');
+
+
+// db.sales.insertOne({
+//     key:{
+//         PateintID:"abs1234",
+//     },
+//     basic:{
+//         Fname:"fname",
+//         Mname:"Thej",
+//         Lname: "dfgdf",
+//         DateOfBirth:"34345345"
+//     }
+// })
+db.sales.find({
+    key:{
+        PateintID:"abs1234"
+    }
+},
+{basic:{
+    Fname:1
+}}
+)

@@ -1,12 +1,12 @@
 const mongoose = require('mongoose');
 const patientShema = mongoose.Schema({
-    Basic:
-    [{
-        PateintID:{
+    PateintID:{
             type:String,
             required:true,
             unique:true
-        },
+    },
+    Basic:
+    {
         Fname: {
             type: String,
             required: true,
@@ -30,8 +30,12 @@ const patientShema = mongoose.Schema({
             type: Number,
             required: true,
         },
-        Sex:{
+        Gender:{
             type:String,
+            required:true,
+        },
+        Age:{
+            type:Number,
             required:true,
         },
         Address: {
@@ -54,7 +58,7 @@ const patientShema = mongoose.Schema({
             type: String,
             required: true,
         }, 
-    }],
+    },
     Documents:{
         AdharNumber:{
             type:Number,
@@ -89,7 +93,6 @@ const patientShema = mongoose.Schema({
     },
     other:{
         type:JSON,
-        required:true, 
     }, 
 },
 {
