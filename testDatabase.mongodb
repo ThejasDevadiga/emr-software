@@ -3,7 +3,7 @@ use('test');
 
 // db,sales,drop()
 db.sales.insertOne({
-    PateintID:"dddddd",
+    PatientID:"dddddd",
     basic:{
         Fname:"c",
         Mname:"dc",
@@ -14,7 +14,7 @@ db.sales.insertOne({
 
 
 // db.sales.find({
-//  PateintID:"abs123 4"
+//  PatientID:"abs123 4"
 // },
 // {basic:{
 //     Fname:1

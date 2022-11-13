@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const patientShema = mongoose.Schema({
-    PateintID:{
+    PatientID:{
             type:String,
             required:true,
             unique:true
@@ -100,6 +100,6 @@ const patientShema = mongoose.Schema({
 
 });
 
-const Pateint = mongoose.model('Patient', patientShema)
+const Patient = mongoose.model('Patient', patientShema)
 
-module.exports = Pateint;
+module.exports = Patient;
