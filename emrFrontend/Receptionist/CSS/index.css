@@ -1,0 +1,82 @@
+*{
+    background-color: rgb(218, 222, 223);
+}
+.top-bar{
+    background-color: rgb(255, 255, 255);
+    height:4rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    text-align: center;
+}
+.designation{
+    background-color: rgb(13, 69, 98);
+    width: 15%;
+}
+.hosp-name{
+    background-color: rgb(51, 102, 128);;
+    width: 20%;
+}
+.hosp-desc{
+    background-color: rgb(255, 255, 255);
+    width: 30%;
+}
+.profileData{
+    background-color: rgb(85, 162, 201);;
+    width: 35%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.profile-picture{
+    width:5rem;
+    background-color: rgb(254, 254, 254);
+    border-radius: 100px;
+    margin:3px
+}
+.profile-name{
+    background-color: rgb(147, 179, 212);
+    width: 75%;
+    margin: 2%;
+    align-self: center;
+}
+.second-bar{
+    height:10rem;
+    background-color: rgb(255, 255, 255);
+}
+
+
+@media screen and (max-width: 692px) {
+    .top-bar{
+        flex-direction: column;
+        justify-content: center;
+        align-items: initial;
+        height:10rem
+    }
+    .designation{
+        height: 30%;
+        width: 100%;
+    }
+    .hosp-name{
+        height: 30%;
+        width: 100%;
+    }
+    .profileData{
+        width: 100%;
+        height:40%;
+    }
+    .profile-name{
+        height: 2rem;
+        width: 100%;
+    }
+    .hosp-desc{
+        height: 0px;
+    }
+    .profile-picture{
+        width:20%;
+        height:80%;
+        align-self: center;
+
+    }
+    
+}

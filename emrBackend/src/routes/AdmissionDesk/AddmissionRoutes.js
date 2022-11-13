@@ -3,13 +3,16 @@ const router = express.Router()
 const dotenv = require('dotenv');
 const auth = require('../middlewares/authMiddleware')
 dotenv.config();
+const deletePatientData= require('../../controllers/pateint/patientDelete')
+const getPatientData= require('../../controllers/pateint/patientRead')
+const updatePatientData= require('../../controllers/pateint/patientUpdate')
+const insertPatientData= require('../../controllers/pateint/patientInsert')
 
 
 router.post('/api/admission-desk/insert-patient-data',auth, insertPatientData)
 router.post('/api/admission-desk/update-patient-data',auth, updatePatientData)
 router.post('/api/admission-desk/delete-patient-data',auth, deletePatientData)
 router.post('/api/admission-desk/get-patient-data',auth, getPatientData)
-router.post('/api/admission-desk/patient-count',auth, getPatientCount)
 router.post('/api/admission-desk/bed-count',auth, getBedCount)
 router.post('/api/admission-desk/available-bed',auth, getAvaililablebed)
 router.post('/api/admission-desk/available-services',auth, availableServices)

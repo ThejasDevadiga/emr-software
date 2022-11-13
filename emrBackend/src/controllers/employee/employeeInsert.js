@@ -1,12 +1,14 @@
-const PatientShema = require('../../models/PatientDataSchema')
+const EmployeeShema = require('../../models/EmployeeDataScheme')
 const generateId = require('../../utils/GenerateId')
 const generateToken = require('../../utils/generateToken')
 const asyncHandler = require("express-async-handler");
 
-const insertPatientData = asyncHandler(async (req, res) => {
+
+
+const insertEmployeeData = asyncHandler(async (req, res) => {
     const { 
       requestedId,
-        PatientId,
+        EmployeeId,
         Fname,
         Mname,
         Lname,  
@@ -15,7 +17,8 @@ const insertPatientData = asyncHandler(async (req, res) => {
         Phone,
         Gender,
         Age,
-        Address,
+        AddressL1,
+        AddressL2,
         City,
         State,
         Country,
@@ -23,19 +26,23 @@ const insertPatientData = asyncHandler(async (req, res) => {
         AdharNumber,
         BloodGroup,
         DiseaseName,
-        Category,   
+        Education,
+        Section,
+        Department,
+        WorkExperience,
+        Designation
     } = req.body;
-    const findPatient = await PatientShema.findOne({PatientId});
-    if (findPatient) {
+    const findEmployee = await EmployeeShema.findOne({EmployeeId});
+    if (findEmployee) {
       res.status(403).json({
         acknowledged : true,
-        message : 'Patient already exists',
+        message : 'Employee already exists',
         token : generateToken(requestedId)
       })
     }
     try{
-    const result = await PatientShema.inserOne({
-        PatientId: generateId('PAT'),
+    const result = await EmployeeShema.inserOne({
+        EmployeeId: generateId('PAT'),
         Basic:{
             Fname:Fname,
             Mname:Mname,
@@ -45,27 +52,32 @@ const insertPatientData = asyncHandler(async (req, res) => {
             Phone:Phone,
             Gender:Gender,
             Age:Age,
-            Address:Address,
+            Address:{
+                line1:AddressL1,
+                line2:AddressL2
+            },
             City:City,
             State:State,
             Country:Country,
             Zip:Zip
         },
-        Document:{
+        Documents:{
             AdharNumber:AdharNumber,
             BloodGroup:BloodGroup,
         },
-        Disease:{
-            DiseaseName:DiseaseName,
-            Category:Category,
-            DiagnosisTime:Date(Date.now()).toString().slice(16,24),
-            DiagnosisDate:Date(Date.now()).toString().slice(0,15),
+        Speciality:{
+            Education:Education,
+            Section:Section,
+            Department:Department,
+            WorkExperience:WorkExperience,
+            Designation:Designation,
+            dateOfJoin:Date(Date.now()).toString()
         }
     });
     if (result) {
       res.status(201).json({
         acknowledged: true,
-        PatientId: result.PatientId,
+        EmployeeId: result.EmployeeId,
         message:"Data inserted successfully",
         token:generateToken(requestedId)
       });
@@ -84,4 +96,4 @@ const insertPatientData = asyncHandler(async (req, res) => {
       })
     }
 });
-module.exports = insertPatientData;
+module.exports = insertEmployeeData;

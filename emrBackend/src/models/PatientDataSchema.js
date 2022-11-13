@@ -84,11 +84,11 @@ const patientShema = mongoose.Schema({
         },
         DiagnosisTime:{
             type:String,
-            default: Date(Date.now()).toString().slice(16,24),
+            default: ''
         },
         DiagnosisDate:{
             type:String,
-            default: Date(Date.now()).toString().slice(0,15),
+            default: ''
         }
     },
     other:{

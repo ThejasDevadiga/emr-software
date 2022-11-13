@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const employeeShema = mongoose.Schema({
-    EmployeeID:{
+    EmployeeId:{
         type:String,
         required:true,
         unique:true
@@ -26,12 +26,16 @@ const employeeShema = mongoose.Schema({
         Email: {
             type: String,
         },
-        phone: {
+        Phone: {
             type: Number,
             required: true,
         },
-        Sex:{
+        Gender:{
             type:String,
+            required:true,
+        },
+        Age:{
+            type:Number,
             required:true,
         },
         Address: {
@@ -44,19 +48,19 @@ const employeeShema = mongoose.Schema({
                 required:true,
             },
         },
-        city: {
+        City: {
             type: String,
             required: true,
         },
-        state: {
+        State: {
             type: String,
             required: true,
         },
-        country: {
+        Country: {
             type: String,
             required: true,
         },
-        zip: {
+        Zip: {
             type: String,
             required: true,
         }, 
@@ -67,10 +71,6 @@ const employeeShema = mongoose.Schema({
             required:true,
         },
         BloodGroup:{
-            type:String,
-            required:true,
-        },
-        Insurance:{
             type:String,
             required:true,
         },
@@ -88,7 +88,7 @@ const employeeShema = mongoose.Schema({
             type:String,
             required:true,
         },
-        Experience:{
+        WorkExperience:{
             type:String,
             required:true,
         },
@@ -96,14 +96,14 @@ const employeeShema = mongoose.Schema({
             type:Date,
             required:true,
         },
-        AdmittedDate:{
-            type:Date,
-            required:true,
+        DateofJoin:{
+            type:String,
+            required:Date(Date.now()).toString(),
         }
     },
     other:{
-        type:JSON,
-        required:true, 
+        type:Object, 
+        
     }, 
 },
 {
