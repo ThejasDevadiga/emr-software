@@ -1,9 +1,11 @@
 const PatientShema = require('../../models/PatientDataSchema')
 const generateId = require('../../utils/GenerateId')
 const generateToken = require('../../utils/generateToken')
+const asyncHandler = require("express-async-handler");
 
 const insertPatientData = asyncHandler(async (req, res) => {
     const { 
+      requestId,
         PatientId,
         Fname,
         Mname,
@@ -26,8 +28,11 @@ const insertPatientData = asyncHandler(async (req, res) => {
     } = req.body;
     const findPatient = await PatientShema.findOne({PatientId});
     if (findPatient) {
-      res.status(403);
-      throw new Error("User already exists");
+      res.status(403).json({
+        acknowledged : true,
+        message : 'Patient already exists',
+        token : generateToken(requestId)
+      })
     }
     const result = await PatientShema.inserOne({
         PatientId: generateId('PAT'),
@@ -61,13 +66,14 @@ const insertPatientData = asyncHandler(async (req, res) => {
         _id: result._id,
         acknowledged: true,
         PatientId: result.PatientId,
-        token:generateToken(PatientId)
+        token:generateToken(requestId)
       });
     } else {
-      res.status(400);
-      throw new Error("Error occurred!!!");
+      res.status(400).json({
+        acknowledged : true,
+        token:generateToken(requestId),
+        message : err.message
+      })
     }
 });
 module.exports = insertPatientData;
-
- 
