@@ -89,11 +89,61 @@ const patientShema = mongoose.Schema({
         DiagnosisDate:{
             type:String,
             default: ''
+        },
+        DiagnosisDesc:{
+            type:String,
+            default: ''
         }
     },
-    other:{
-        type:JSON,
-    }, 
+    ReportDocuments:{
+        doc1:{
+            DocumentName:{
+                type:String,
+            },
+            DocImage:{
+                data:Buffer,
+                contentType:String,
+            }
+        },
+        doc2:{
+            DocumentName:{
+                type:String,
+            },
+            DocImage:{
+                data:Buffer,
+                contentType:String,
+            }
+        },
+        doc3:{
+            DocumentName:{
+                type:String,
+            },
+            DocImage:{
+                data:Buffer,
+                contentType:String,
+            }
+        },
+        doc4 :{
+            DocumentName:{
+                type:String,
+            },
+            DocImage:{
+                data:Buffer,
+                contentType:String,
+            }
+        },
+        doc5 :{
+            DocumentName:{
+                type:String,
+            },
+            DocImage:{
+                data:Buffer,
+                contentType:String,
+            }
+        }
+        
+    }
+
 },
 {
     timestamps: true,

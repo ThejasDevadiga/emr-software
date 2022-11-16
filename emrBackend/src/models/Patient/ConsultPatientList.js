@@ -5,9 +5,8 @@ const DoctorPatientShema = mongoose.Schema({
         required:true,
         unique:true
     },
-    Details:
-    {
-        
+    Basic:
+    { 
         Fname: {
             type: String,
             required: true,
@@ -39,23 +38,21 @@ const DoctorPatientShema = mongoose.Schema({
     Disease:{
         DiseaseName:{
             type:String,
-            required:true,
         },
-        DiseaseCategory:{
+        Category:{
             type:String,
-            required:true,
         },
-        AdmittedTime:{
-            type:Date,
-            required:true,
-        },
-        AdmittedDate:{
-            type:Date,
-            required:true,
-        },
-        DiseaseDesc:{
+        DiagnosisTime:{
             type:String,
-            required:true,
+            default: ''
+        },
+        DiagnosisDate:{
+            type:String,
+            default: ''
+        },
+        DiagnosisDesc:{
+            type:String,
+            default: ''
         }
     },
     report:{
@@ -80,7 +77,7 @@ const DoctorPatientShema = mongoose.Schema({
          
         }
     },
-    documents:{
+    ReportDocuments:{
         doc1:{
             DocumentName:{
                 type:String,
