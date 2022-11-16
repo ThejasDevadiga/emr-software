@@ -5,6 +5,17 @@ const auth = require('../middlewares/authMiddleware')
 dotenv.config();
 
 
+const {
+    getPatientCount,
+    getAvaililablebed,
+    availableDoctor,
+    getBedCount,
+    getEmployeesData,
+    getAppointmentsList,
+    availableServices
+
+} = require('../../controllers/helpdesk/hlpRead')
+
 router.post('/api/help-desk/patient-count',auth, getPatientCount)
 router.post('/api/help-desk/bed-count',auth, getBedCount)
 router.post('/api/help-desk/available-bed',auth, getAvaililablebed)

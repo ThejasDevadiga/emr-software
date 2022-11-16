@@ -4,6 +4,35 @@ const dotenv = require('dotenv');
 const auth = require('../middlewares/authMiddleware')
 dotenv.config();
 
+const {
+    deletePatientDetails,
+    deleteTransaction,
+    deleteconsultantDetails,
+    deleteEmployeedetails
+
+} = require('../../controllers/manager/manDelete')
+
+const {
+    insertEmployeeDetails
+} = require('../../controllers/manager/manInsert')
+
+
+const {
+    getPatientDetails,
+    getTransaction,
+    getConsultDetails,
+    getEmployeeStatus
+} = require('../../controllers/manager/manRead')
+
+
+const {
+    updatePatientDetails,
+    updateTransaction,
+    updateconsultantDetails,
+    updateEmployeedetails
+} = require('../../controllers/manager/manUpdate')
+
+
 router.post('/api/manager/get-patient-details',auth,getPatientDetails)
 router.post('/api/manager/update-patient-details',auth,updatePatientDetails)    
 router.post('/api/manager/delete-patient-details',auth,deletePatientDetails)

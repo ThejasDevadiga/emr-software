@@ -1,11 +1,19 @@
 const express = require('express');
 const router = express.Router()
 const auth = require('../middlewares/authMiddleware')
-const deletePatientData= require('../../controllers/pateint/patientDelete')
-const getPatientData= require('../../controllers/pateint/patientRead')
-const updatePatientData= require('../../controllers/pateint/patientUpdate')
-const insertPatientData= require('../../controllers/pateint/patientInsert')
-
+const deletePatientData= require('../../controllers/patient/patientDelete')
+const {getPatientData,getPatientCount}= require('../../controllers/patient/patientRead')
+const updatePatientData= require('../../controllers/patient/patientUpdate')
+const insertPatientData= require('../../controllers/patient/patientInsert')
+const {
+    getBedCount,
+    getAvaililablebed,
+    availableServices,
+    availableDoctor,
+    getAppointmentsList,
+    getEmployeesData,
+    schedulePatient
+} = require('../../controllers/Hospital/hospRead')
 
 router.post('/api/admission-desk/insert-patient-data',auth, insertPatientData)
 router.post('/api/admission-desk/update-patient-data',auth, updatePatientData)

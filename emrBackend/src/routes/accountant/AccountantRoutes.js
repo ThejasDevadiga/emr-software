@@ -3,12 +3,24 @@ const router = express.Router()
 const dotenv = require('dotenv');
 const auth = require('../middlewares/authMiddleware')
 dotenv.config();
-// const {
-//     delFaculty,
-//     delContact,
-//     delEnroll,
-//     delEvent
-// } = require("../controllers/deleteDataRoutes")
+const {
+    deleteTransaction,
+    deletePatientDetails
+} = require("../../controllers/accountant/accDelete")
+const {
+    getReport,
+    getPatientDetails,
+    getDrugDetails,
+    getTransaction
+} = require("../../controllers/accountant/accRead")
+const {
+    editTransaction
+} = require("../../controllers/accountant/accUpdate")
+
+const{
+    uploadTransaction,
+    uploadReport
+} = require("../../controllers/accountant/accInsert")
 
 
 router.post('/api/accountant/patient-details',auth,getPatientDetails)

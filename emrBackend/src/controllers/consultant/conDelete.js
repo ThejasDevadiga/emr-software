@@ -19,5 +19,6 @@ const proceedToPharmacy  = asyncHandler(async (req, res, next) => {
 })
 
 module.exports = {
-    proceedToLabtest
+    proceedToLabtest,
+    proceedToPharmacy
 }

@@ -1,9 +1,28 @@
 const express = require('express');
 const router = express.Router()
-const dotenv = require('dotenv');
 const auth = require('../middlewares/authMiddleware');
-const { Router } = require('express');
-dotenv.config();
+
+
+const {
+proceedToLabtest,
+    proceedToPharmacy
+} = require('../../controllers/consultant/conDelete')
+
+const {
+    uploadReport,
+    uploadPrescription
+} = require('../../controllers/consultant/conInsert')
+
+const {
+    getPatientDetails,
+    getServicesData,
+    labTestList
+} = require('../../controllers/consultant/conRead')
+
+const {
+    updateReport,
+    updatePrescription
+} = require('../../controllers/consultant/conUpdate')
 
 router.post('/api/consultant/patient-details',auth,getPatientDetails)
 router.post('/api/consultant/upload-report',auth,uploadReport)
