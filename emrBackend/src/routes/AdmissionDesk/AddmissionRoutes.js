@@ -1,8 +1,6 @@
 const express = require('express');
 const router = express.Router()
-const dotenv = require('dotenv');
 const auth = require('../middlewares/authMiddleware')
-dotenv.config();
 const deletePatientData= require('../../controllers/pateint/patientDelete')
 const getPatientData= require('../../controllers/pateint/patientRead')
 const updatePatientData= require('../../controllers/pateint/patientUpdate')

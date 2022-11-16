@@ -1,6 +1,5 @@
 const PatientShema = require('../../models/Patient/PatientDataSchema')
 const ConsultPatient = require('../../models/Patient/ConsultPatientList')
-const generateId = require('../../utils/GenerateId')
 const generateToken = require('../../utils/generateToken')
 const asyncHandler = require("express-async-handler");
 

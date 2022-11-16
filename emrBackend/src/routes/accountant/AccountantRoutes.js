@@ -12,6 +12,7 @@ dotenv.config();
 
 
 router.post('/api/accountant/patient-details',auth,getPatientDetails)
+router.post('/api/accountant/delete-patient',auth,deletePatientDetails)
 router.post('/api/accountant/drug-details',auth,getDrugDetails)
 router.post('/api/accountant/upload-transaction',auth,uploadTransaction)
 router.post('/api/accountant/edit-transaction',auth,editTransaction)

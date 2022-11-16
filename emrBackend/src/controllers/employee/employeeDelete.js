@@ -1,4 +1,4 @@
-const EmployeeShema = require('../../models/EmployeeDataScheme')
+const EmployeeShema = require('../../models/Employee/EmployeeDataScheme')
 const generateToken = require('../../utils/generateToken')
 const asyncHandler = require("express-async-handler");
 
