@@ -10,13 +10,13 @@ module.exports = (req, res, next) => {
     }
     const token = req.headers.authorization.split(" ")[0];
     // console.log("Token :",token);
-    const decodedToken = jwt.verify(token, "ACAHS", { algorithms: ["HS256"] });
+    const decodedToken = jwt.verify(token, "EMRSOFTWARE", { algorithms: ["HS256"] });
     // console.log("Decoded token : ",decodedToken);
     const userId = decodedToken.id;
     // console.log("ID : ",req.body.id);
     if (req.body.userId && req.body.id !== id) {
-      console.log("ID : ", req.body.id);
-      console.log("Authentication Unsuccessfull!");
+      // console.log("ID : ", req.body.id);
+      // console.log("Authentication Unsuccessfull!");
       throw "Invalid user ID";
     } else {
       //  console.log("Authentication Successfull!");

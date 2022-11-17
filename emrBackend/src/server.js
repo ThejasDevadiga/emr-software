@@ -3,9 +3,17 @@ const dotenv = require("dotenv");
 const connectDB = require("./config/db");
 const cors = require("cors");
 
-// const userRoutes = require("./routes/userRoutes");
 
-// const apiRoutes = require("./routes/apiRoutes");
+
+const AccountantRoutes = require("./routes/accountant/AccountantRoutes");
+const AdmissionRoutes = require("./routes/AdmissionDesk/AddmissionRoutes");
+const AppointmentRoutes = require("./routes/Appointment/AppointmentRoutes");
+const ConsultantRoutes = require("./routes/Consultant/ConsultantRoutes");
+const HelpDeskRoutes = require("./routes/helpdesk/HelpDeskRoutes");
+const LaboratoryRoutes = require("./routes/laboratory/labTechnitianRoutes");
+const ManagerRoutes = require("./routes/manager/ManagerRoutes");
+const PharmacyRoutes = require("./routes/pharmacy/PharmacyRoutes");
+
 const { notFound, errorHandler } = require("./middlewares/errorMiddleware");
 dotenv.config();
 
@@ -21,9 +29,16 @@ app.use(express.json());
 
 app.use(cors());
 
-// app.use("/", apiRoutes);
 
-// app.use("/api/users", userRoutes);
+app.use('/',AccountantRoutes)
+app.use('/',AdmissionRoutes)
+app.use('/',ConsultantRoutes)
+app.use('/',HelpDeskRoutes)
+app.use('/',ManagerRoutes)
+app.use('/',PharmacyRoutes)
+app.use('/',AppointmentRoutes)
+app.use('/',LaboratoryRoutes)
+
 
 app.use(notFound);
 

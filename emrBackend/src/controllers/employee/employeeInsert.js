@@ -7,7 +7,7 @@ const asyncHandler = require("express-async-handler");
 
 const insertEmployeeData = asyncHandler(async (req, res) => {
     const { 
-      requestedId,
+      'TestingRequests',
         EmployeeId,
         Fname,
         Mname,
@@ -37,7 +37,7 @@ const insertEmployeeData = asyncHandler(async (req, res) => {
       res.status(403).json({
         acknowledged : true,
         message : 'Employee already exists',
-        token : generateToken(requestedId)
+        token : generateToken('TestingRequests')
       })
     }
     try{
@@ -79,19 +79,19 @@ const insertEmployeeData = asyncHandler(async (req, res) => {
         acknowledged: true,
         EmployeeId: result.EmployeeId,
         message:"Data inserted successfully",
-        token:generateToken(requestedId)
+        token:generateToken('TestingRequests')
       });
     } else {
       res.status(400).json({
         acknowledged : true,
-        token:generateToken(requestedId),
+        token:generateToken('TestingRequests'),
         message : "Error while inserting data"
       })
     }
     }catch(err){
       res.status(400).json({
         acknowledged : true,
-        token:generateToken(requestedId),
+        token:generateToken('TestingRequests'),
         message : err.message
       })
     }

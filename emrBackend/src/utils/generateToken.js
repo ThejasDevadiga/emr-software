@@ -2,10 +2,11 @@ const jwt = require('jsonwebtoken');
 
 
 const generateToken = (id) =>{
-    return jwt.sign({id}, process.env.JWT_SECRET, {
+    return jwt.sign({id},"EMRSOFTWARE", {
         expiresIn: 30,
     })
 };
 
 
 module.exports= generateToken;
+ 
