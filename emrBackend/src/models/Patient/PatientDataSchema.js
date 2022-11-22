@@ -68,10 +68,6 @@ const patientShema = mongoose.Schema({
             type:String,
             required:true,
         },
-        Insurance:{
-            type:String,
-            required:true,
-        },
     },
     Disease:{
         DiseaseName:{

@@ -6,7 +6,7 @@ const editTransaction  = asyncHandler(async (req, res, next) => {
     res.status(200).json({
         acknowledged : true,
         message : 'Data Added Successfully',
-        token: generateToken('TestingRequests')
+        token: generateToken('RequestID')
 })
 })
 module.exports  = {

@@ -6,7 +6,6 @@ const GenerateId = (name)=>{
     var hour = date.getHours();
     var minute = date.getMinutes();
     var second = date.getSeconds();
-    var millisecond = date.getMilliseconds();
     if (year<10){
         year = `0${year}`
     }
@@ -25,10 +24,8 @@ const GenerateId = (name)=>{
     if (second<10){
         second = `0${second}`
     }
-    if (millisecond<10){
-        millisecond = `0${millisecond}`
-    }    
-    return `AYUR${day}${month}${year}${name}${hour}${minute}-${second}${millisecond}`;
+      
+    return `AYUR${day}${month}${year}${name}${hour}${minute}-${second}`;
 }
 module.exports = GenerateId
  
