@@ -4,8 +4,7 @@ const generateToken = require('../../utils/generateToken')
 const asyncHandler = require("express-async-handler");
 
 const passWaitingToConsult = asyncHandler(async(req,res) =>{  
-        
-    const {
+            const {
         requestedId,
         PatientId,
     } = req.body;
@@ -17,7 +16,7 @@ const passWaitingToConsult = asyncHandler(async(req,res) =>{
         })
     }
     const findPatient = await PatientShema.findOne({PatientID:PatientId},{'_id':0});
-    if (!findPatient) {
+    if (!findPatient) { 
       res.status(403).json({
         acknowledged : true,
         message : 'Patient data not found!',
@@ -25,12 +24,7 @@ const passWaitingToConsult = asyncHandler(async(req,res) =>{
       })
     }
     else{
-      const Basic = await findPatient.Basic;
-      const Disease = await findPatient.Disease
-      const Documents = await findPatient.Documents
-      console.log(Basic,Documents)
-      // const Patientid = await findPatient.PatientID
-      const insertedResult = await ConsultPatient.create({PatientID: PatientId , Basic:Basic,Documents:Documents,Disease:Disease}) 
+      const insertedResult = await ConsultPatient.create({PatientID:PatientId}) 
        if (!insertedResult) {
          res.status(403).json({
           acknowledged : true,
