@@ -42,19 +42,19 @@ const patientShema = mongoose.Schema({
             type: String,
             required: true,
         },
-        city: {
+        City: {
             type: String,
             required: true,
         },
-        state: {
+        State: {
             type: String,
             required: true,
         },
-        country: {
+        Country: {
             type: String,
             required: true,
         },
-        zip: {
+        Zip: {
             type: String,
             required: true,
         }, 

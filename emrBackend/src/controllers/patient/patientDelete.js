@@ -22,7 +22,7 @@ const deletePatientData = asyncHandler(async (req, res) => {
     }
     else{
         try{
-            const result = await PatientShema.deleteOne({PatientId: PatientId})
+            const result = await PatientShema.deleteOne({PatientID: PatientId})
             if (result){
                 res.status(200).json({
                 acknowledged: true,

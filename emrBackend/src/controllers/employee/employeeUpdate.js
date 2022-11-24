@@ -4,7 +4,7 @@ const asyncHandler = require("express-async-handler");
 
 const updateEmployeeData = asyncHandler(async (req, res, next) => {
     const {
-        RequestID,
+        requestedId,
         EmployeeId,
         updatedBasic,
         updatedDocument,
@@ -25,21 +25,21 @@ const updateEmployeeData = asyncHandler(async (req, res, next) => {
             res.status(201).json({
                 acknowledged: true,
                 EmployeeId: result.EmployeeId,
-                token:generateToken('RequestID')
+                token:generateToken(requestedId)
                 })
             }
         else{
             res.status(500).json({
                 acknowledged: false,
                 message: "Error while updating data",
-                token:generateToken('RequestID')
+                token:generateToken(requestedId)
                 })
         }
     }
     catch(err){
         res.status(400).json({
           acknowledged : true,
-          token:generateToken('RequestID'),
+          token:generateToken(requestedId),
           message : err.message
         })
       }

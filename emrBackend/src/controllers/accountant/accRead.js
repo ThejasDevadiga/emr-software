@@ -6,7 +6,7 @@ const getReport  = asyncHandler(async (req, res, next) => {
     res.status(200).json({
         acknowledged : true,
         message : 'Data Added Successfully',
-        token: generateToken('RequestID')
+        token: generateToken(requestedId)
 })
 })
 
@@ -14,7 +14,7 @@ const getPatientDetails  = asyncHandler(async (req, res, next) => {
     res.status(200).json({
         acknowledged : true,
         message : 'Data Added Successfully',
-        token: generateToken('RequestID')
+        token: generateToken(requestedId)
 })
 })
 
@@ -23,7 +23,7 @@ const getDrugDetails  = asyncHandler(async (req, res, next) => {
     res.status(200).json({
         acknowledged : true,
         message : 'Data Added Successfully',
-        token: generateToken('RequestID')
+        token: generateToken(requestedId)
 })
 })
 
@@ -32,7 +32,7 @@ const getTransaction  = asyncHandler(async (req, res, next) => {
     res.status(200).json({
         acknowledged : true,
         message : 'Data Added Successfully',
-        token: generateToken('RequestID')
+        token: generateToken(requestedId)
 })
 })
 

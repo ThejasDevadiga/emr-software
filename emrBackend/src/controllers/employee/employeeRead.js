@@ -3,7 +3,7 @@ const generateToken = require('../../utils/generateToken')
 const asyncHandler = require("express-async-handler");
 
 const readEmployeeData = asyncHandler(async (req, res) => {
-    const {RequestID} = req.body;
+    const {requestedId} = req.body;
     const {filter,projection} = req.body
     if (!filter && !projection && !filter) {
         res.status(400).json({
@@ -17,14 +17,14 @@ const readEmployeeData = asyncHandler(async (req, res) => {
             res.status(200).json({
                 acknowledged: true,
                 data: result,
-                token:generateToken('RequestID')
+                token:generateToken(requestedId)
             })
         }
         else{
             res.status(400).json({
                 acknowledged: true,
                 data: null,
-                token:generateToken('RequestID')
+                token:generateToken(requestedId)
         })
         }
     }
@@ -32,7 +32,7 @@ const readEmployeeData = asyncHandler(async (req, res) => {
         res.status(500).json({
             acknowledged: true,
             data: null,
-            token:generateToken('RequestID')
+            token:generateToken(requestedId)
         })
     }
 })

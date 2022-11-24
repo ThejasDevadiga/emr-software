@@ -14,6 +14,9 @@ const {
     getEmployeesData,
     schedulePatient
 } = require('../../controllers/Hospital/hospRead')
+const {passWaitingToConsult} = require('../../controllers/passPatientData/waitingToConsult')
+
+
 
 router.post('/api/admission-desk/insert-patient-data',auth, insertPatientData)
 router.post('/api/admission-desk/update-patient-data',auth, updatePatientData)
@@ -26,4 +29,5 @@ router.post('/api/admission-desk/available-doctor',auth, availableDoctor)
 router.post('/api/admission-desk/appointments-list',auth, getAppointmentsList)
 router.post('/api/admission-desk/get-Employees-Data',auth, getEmployeesData)
 router.post('/api/admission-desk/schedule-patient',auth, schedulePatient)
+router.post('/api/admission-desk/pass-waiting-patient-consultant',auth, passWaitingToConsult)
 module.exports = router;

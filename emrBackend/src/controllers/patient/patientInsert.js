@@ -29,7 +29,7 @@ const insertPatientData = asyncHandler(async (req, res) => {
         Category,   
     } = req.body;
     const findPatient = await PatientShema.findOne({PatientID:PatientId});
-    if (findPatient==[]) {
+    if (findPatient) {
       res.status(403).json({
         acknowledged : true,
         message : 'Patient already exists',
@@ -49,10 +49,10 @@ const insertPatientData = asyncHandler(async (req, res) => {
             Gender:Gender,
             Age:Age,
             Address:Address,
-            city:City,
-            state:State,
-            country:Country,
-            zip:Zip
+            City:City,
+            State:State,
+            Country:Country,
+            Zip:Zip
         },
         Documents:{
             AdharNumber:AdharNumber,

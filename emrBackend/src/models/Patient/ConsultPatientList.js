@@ -1,12 +1,12 @@
 const mongoose = require('mongoose');
-const DoctorPatientShema = mongoose.Schema({
-    PatientId:{
+const ConsultPatientShema = mongoose.Schema({
+    PatientID:{
         type:String,
         required:true,
         unique:true
     },
     Basic:
-    { 
+    {
         Fname: {
             type: String,
             required: true,
@@ -30,10 +30,44 @@ const DoctorPatientShema = mongoose.Schema({
             type: Number,
             required: true,
         },
-        Sex:{
+        Gender:{
             type:String,
             required:true,
-        }
+        },
+        Age:{
+            type:Number,
+            required:true,
+        },
+        Address: {
+            type: String,
+            required: true,
+        },
+        City: {
+            type: String,
+            required: true,
+        },
+        State: {
+            type: String,
+            required: true,
+        },
+        Country: {
+            type: String,
+            required: true,
+        },
+        Zip: {
+            type: String,
+            required: true,
+        }, 
+    },
+    Documents:{
+        AdharNumber:{
+            type:Number,
+            required:true,
+        },
+        BloodGroup:{
+            type:String,
+            required:true,
+        },
     },
     Disease:{
         DiseaseName:{
@@ -130,6 +164,6 @@ const DoctorPatientShema = mongoose.Schema({
     timestamps: true,
 });
 
-const DoctorPatientList = mongoose.model('DoctorPatientList', DoctorPatientShema)
+const ConsultPatient = mongoose.model('ConsultPatient', ConsultPatientShema)
 
-module.exports = DoctorPatientList;
+module.exports = ConsultPatient;

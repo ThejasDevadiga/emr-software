@@ -7,28 +7,28 @@ const getPatientDetails  = asyncHandler(async (req, res, next) => {
     res.status(200).json({
         acknowledged : true,
         message : 'Data Added Successfully',
-        token: generateToken('RequestID')
+        token: generateToken(requestedId)
 })
 })
 const getTransaction  = asyncHandler(async (req, res, next) => {
     res.status(200).json({
         acknowledged : true,
         message : 'Data Added Successfully',
-        token: generateToken('RequestID')
+        token: generateToken(requestedId)
 })
 })
 const getConsultDetails  = asyncHandler(async (req, res, next) => {
     res.status(200).json({
         acknowledged : true,
         message : 'Data Added Successfully',
-        token: generateToken('RequestID')
+        token: generateToken(requestedId)
 })
 })
 const getEmployeeStatus  = asyncHandler(async (req, res, next) => {
     res.status(200).json({
         acknowledged : true,
         message : 'Data Added Successfully',
-        token: generateToken('RequestID')
+        token: generateToken(requestedId)
 })
 })
 
