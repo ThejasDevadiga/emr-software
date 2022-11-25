@@ -35,4 +35,12 @@ const DrugDetailSchema = mongoose.Schema({
             required:true,
         }
     },
-})
+},
+{
+    timestamps: true,
+});
+
+
+const DrugDetails = mongoose.model('DrugDetails', DrugDetailSchema)
+
+module.exports = DrugDetails;

@@ -85,54 +85,6 @@ const patientShema = mongoose.Schema({
             default: ''
         }
     },
-    ReportDocuments:{
-        doc1:{
-            DocumentName:{
-                type:String,
-            },
-            DocImage:{
-                data:Buffer,
-                contentType:String,
-            }
-        },
-        doc2:{
-            DocumentName:{
-                type:String,
-            },
-            DocImage:{
-                data:Buffer,
-                contentType:String,
-            }
-        },
-        doc3:{
-            DocumentName:{
-                type:String,
-            },
-            DocImage:{
-                data:Buffer,
-                contentType:String,
-            }
-        },
-        doc4 :{
-            DocumentName:{
-                type:String,
-            },
-            DocImage:{
-                data:Buffer,
-                contentType:String,
-            }
-        },
-        doc5 :{
-            DocumentName:{
-                type:String,
-            },
-            DocImage:{
-                data:Buffer,
-                contentType:String,
-            }
-        }
-        
-    }
 
 },
 {
