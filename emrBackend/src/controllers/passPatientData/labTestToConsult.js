@@ -26,7 +26,7 @@ if (!findPatient) {
   })
 }
 else{
-  const insertedResult = await ConsultPatient.create({PatientID:PatientId}) 
+  const insertedResult = await ConsultPatient.create({PatientID:PatientId,Status:"Consulting"}) 
    if (!insertedResult) {
      res.status(403).json({
       acknowledged : true,

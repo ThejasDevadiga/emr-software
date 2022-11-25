@@ -1,11 +1,11 @@
 const mongoose = require('mongoose');
-const LabTechPatientShema = mongoose.Schema({
+const WaitingPatients = mongoose.Schema({
     PatientId:{
         type:String,
         required:true,
         unique:true
     },
-    status:{
+    Status:{
         type:String,
         required:true
     }
@@ -14,6 +14,7 @@ const LabTechPatientShema = mongoose.Schema({
     timestamps: true,
 });
 
-const LabTechPatientList = mongoose.model('LabTechPatientList', LabTechPatientShema)
 
-module.exports = LabTechPatientList;
+const WaitingPatientList = mongoose.model('WaitingPatientList', WaitingPatients)
+
+module.exports = WaitingPatientList;

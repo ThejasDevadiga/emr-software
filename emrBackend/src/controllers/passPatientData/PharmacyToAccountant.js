@@ -26,7 +26,7 @@ const passConsultToPharm= asyncHandler(async(req,res) =>{
       })
     }
     else{
-      const insertedResult = await AccountantPatient.create({PatientID:PatientId}) 
+      const insertedResult = await AccountantPatient.create({PatientID:PatientId,Status:"Billing"}) 
        if (!insertedResult) {
          res.status(403).json({
           acknowledged : true,

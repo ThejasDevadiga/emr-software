@@ -1,18 +1,19 @@
 const PatientShema = require('../../models/Patient/PatientDataSchema')
+const WaitingSchema = require('../../models/Patient/waitingPatientList')
+
 const generateId = require('../../utils/GenerateId')
 const generateToken = require('../../utils/generateToken')
 const asyncHandler = require("express-async-handler");
 
 
-
-
 const insertPatientData = asyncHandler(async (req, res) => {
-    const { 
+  try{  
+  const {
       requestedId,
         PatientId,
         Fname,
         Mname,
-        Lname,  
+        Lname,
         DateOfBirth,
         Email,
         Phone,
@@ -36,7 +37,7 @@ const insertPatientData = asyncHandler(async (req, res) => {
         token : generateToken(requestedId)
       })
     }
-    try{
+   
     const result = await PatientShema.create({
       PatientID:PatientId,
         Basic:{
@@ -66,14 +67,35 @@ const insertPatientData = asyncHandler(async (req, res) => {
         }
     });
     if (result) {
-      res.status(201).json({
-        acknowledged: true,
-        PatientId: result.PatientId,
-        message:"Data inserted successfully",
-        token:generateToken(requestedId)
-      });
+    
+      const findPatient = await WaitingSchema.findOne({PatientID:PatientId},{'_id':0});
+      if (findPatient) { 
+        res.status(403).json({
+          acknowledged : true,
+          message : 'Patient data already exist!',
+          token : generateToken(requestedId)
+        })
+      }
+      else{
+        const insertedResult = await WaitingSchema.create({PatientID:PatientId, Status:"Waiting"}) 
+         if (!insertedResult) {
+            res.status(403).json({
+            acknowledged : true,
+            message : 'Error occured while Inserting the data to Waitinglist',
+            token : generateToken(requestedId)
+          })
+         }
+         else{      
+            res.status(201).json({
+            acknowledged: true,
+            PatientId: result.PatientId,
+            message:"Data inserted successfully",
+            token:generateToken(requestedId)
+          });
+        }
+      }
     } else {
-      res.status(400).json({
+         res.status(400).json({
         acknowledged : true,
         token:generateToken(requestedId),
         message : "Error while inserting data"
@@ -86,5 +108,5 @@ const insertPatientData = asyncHandler(async (req, res) => {
         message : err.message
       })
     }
-});
+})
 module.exports = insertPatientData;

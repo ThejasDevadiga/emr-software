@@ -26,7 +26,7 @@ if (!findPatient) {
   })
 }
 else{
-  const insertedResult = await Labpatient.create({PatientID:PatientId}) 
+  const insertedResult = await Labpatient.create({PatientID:PatientId,Status:"Lab Test"}) 
    if (!insertedResult) {
      res.status(403).json({
       acknowledged : true,

@@ -4,11 +4,14 @@ const AccountantPatientShema = mongoose.Schema({
         type:String,
         required:true,
         unique:true
+    },
+    status:{
+        type:String,
+        required:true
     }
 },
     {
         timestamps: true
-    
     })
 
 const AccountPatientList = mongoose.model('AccountantPatientList', AccountantPatientShema)

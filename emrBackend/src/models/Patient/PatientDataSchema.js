@@ -59,17 +59,11 @@ const patientShema = mongoose.Schema({
             required: true,
         }, 
     },
-    Documents:{
-        AdharNumber:{
-            type:Number,
-            required:true,
-        },
+    
+    Disease:{
         BloodGroup:{
             type:String,
-            required:true,
         },
-    },
-    Disease:{
         DiseaseName:{
             type:String,
             required:true,

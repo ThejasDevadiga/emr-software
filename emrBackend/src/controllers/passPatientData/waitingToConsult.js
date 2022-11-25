@@ -1,4 +1,4 @@
-const PatientShema = require('../../models/Patient/PatientDataSchema')
+const WaitingSchema = require('../../models/Patient/waitingPatientList')
 const ConsultPatient = require('../../models/Patient/ConsultPatientList')
 const generateToken = require('../../utils/generateToken')
 const asyncHandler = require("express-async-handler");
@@ -15,7 +15,7 @@ const passWaitingToConsult = asyncHandler(async(req,res) =>{
             token : generateToken(requestedId)
         })
     }
-    const findPatient = await PatientShema.findOne({PatientID:PatientId},{'_id':0});
+    const findPatient = await WaitingSchema.findOne({PatientID:PatientId},{'_id':0});
     if (!findPatient) { 
       res.status(403).json({
         acknowledged : true,
@@ -24,7 +24,7 @@ const passWaitingToConsult = asyncHandler(async(req,res) =>{
       })
     }
     else{
-      const insertedResult = await ConsultPatient.create({PatientID:PatientId}) 
+      const insertedResult = await ConsultPatient.create({PatientID:PatientId,Status:"Consulting"}) 
        if (!insertedResult) {
          res.status(403).json({
           acknowledged : true,
@@ -33,7 +33,7 @@ const passWaitingToConsult = asyncHandler(async(req,res) =>{
         })
       }
       else{
-         const result = await PatientShema.deleteOne({PatientID:PatientId})
+         const result = await WaitingSchema.deleteOne({PatientID:PatientId})
         if (!result) {
           res.status(403).json({
             acknowledged : true,
