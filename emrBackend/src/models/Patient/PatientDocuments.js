@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const PatientDocumentList = mongoose.Schema({
-    PatientId:{
+    PatientID:{
         type:String,
         required:true,
         unique:true

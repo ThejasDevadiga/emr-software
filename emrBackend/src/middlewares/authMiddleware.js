@@ -14,7 +14,7 @@ module.exports = (req, res, next) => {
     // console.log("Decoded token : ",decodedToken);
     const userId = decodedToken.id;
     // console.log("ID : ",req.body.id);
-    if (req.body.userId && req.body.id !== id) {
+    if (req.body.userId && req.body.requestedId !== userId) {
       // console.log("ID : ", req.body.id);
       // console.log("Authentication Unsuccessfull!");
       throw "Invalid user ID";

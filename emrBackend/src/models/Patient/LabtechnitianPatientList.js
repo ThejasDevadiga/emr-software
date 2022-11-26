@@ -1,11 +1,11 @@
 const mongoose = require('mongoose');
 const LabTechPatientShema = mongoose.Schema({
-    PatientId:{
+    PatientID:{
         type:String,
         required:true,
         unique:true
     },
-    status:{
+    Status:{
         type:String,
         required:true
     }

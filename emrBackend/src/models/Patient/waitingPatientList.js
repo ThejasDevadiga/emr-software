@@ -1,9 +1,9 @@
 const mongoose = require('mongoose');
 const WaitingPatients = mongoose.Schema({
-    PatientId:{
+    PatientID:{
         type:String,
         required:true,
-        unique:true
+        unique:true,   
     },
     Status:{
         type:String,

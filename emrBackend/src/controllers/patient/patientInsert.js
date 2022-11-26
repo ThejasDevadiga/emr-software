@@ -1,5 +1,5 @@
-const PatientShema = require('../../models/Patient/PatientDataSchema')
-const WaitingSchema = require('../../models/Patient/waitingPatientList')
+const PatientDetails = require('../../models/Patient/PatientDataSchema')
+const WaitingPatientList = require('../../models/Patient/waitingPatientList')
 
 const generateId = require('../../utils/GenerateId')
 const generateToken = require('../../utils/generateToken')
@@ -7,9 +7,9 @@ const asyncHandler = require("express-async-handler");
 
 
 const insertPatientData = asyncHandler(async (req, res) => {
+  const requestedId = req.body
   try{  
   const {
-      requestedId,
         PatientId,
         Fname,
         Mname,
@@ -29,16 +29,13 @@ const insertPatientData = asyncHandler(async (req, res) => {
         DiseaseName,
         Category,   
     } = req.body;
-    const findPatient = await PatientShema.findOne({PatientID:PatientId});
+    const findPatient = await PatientDetails.findOne({PatientID:PatientId});
     if (findPatient) {
-      res.status(403).json({
-        acknowledged : true,
-        message : 'Patient already exists',
-        token : generateToken(requestedId)
-      })
+        throw new Error(  "Patient already exists in PatientDetails"
+        )
     }
    
-    const result = await PatientShema.create({
+    const result = await PatientDetails.create({
       PatientID:PatientId,
         Basic:{
             Fname:Fname,
@@ -68,22 +65,17 @@ const insertPatientData = asyncHandler(async (req, res) => {
     });
     if (result) {
     
-      const findPatient = await WaitingSchema.findOne({PatientID:PatientId},{'_id':0});
+      const findPatient = await WaitingPatientList.findOne({PatientID:result.PatientID},{'_id':0});
       if (findPatient) { 
-        res.status(403).json({
-          acknowledged : true,
-          message : 'Patient data already exist!',
-          token : generateToken(requestedId)
-        })
+        throw new Error( "Patient already exists in WaitingPatientList"
+        )
       }
       else{
-        const insertedResult = await WaitingSchema.create({PatientID:PatientId, Status:"Waiting"}) 
+        const insertedResult = await WaitingPatientList.create({PatientID:result.PatientID, Status:"Waiting"}) 
          if (!insertedResult) {
-            res.status(403).json({
-            acknowledged : true,
-            message : 'Error occured while Inserting the data to Waitinglist',
-            token : generateToken(requestedId)
-          })
+            const deletePatient = await PatientDetails.deleteOne({PatientID:result.PatientID})
+            throw new Error("Error occured while Inserting the data to Waitinglist" )
+          
          }
          else{      
             res.status(201).json({
@@ -95,13 +87,10 @@ const insertPatientData = asyncHandler(async (req, res) => {
         }
       }
     } else {
-         res.status(400).json({
-        acknowledged : true,
-        token:generateToken(requestedId),
-        message : "Error while inserting data"
-      })
+      throw new Error("Error occured while Inserting the data to PatientDetails")
     }
     }catch(err){
+      console.log(err.message);
       res.status(400).json({
         acknowledged : true,
         token:generateToken(requestedId),

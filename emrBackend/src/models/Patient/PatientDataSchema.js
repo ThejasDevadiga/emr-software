@@ -5,6 +5,11 @@ const patientShema = mongoose.Schema({
             required:true,
             unique:true
     },
+    Status:{
+        type:String,
+        required:true,
+        default:"Waiting"
+    },
     Basic:
     {
         Fname: {
