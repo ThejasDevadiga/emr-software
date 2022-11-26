@@ -16,7 +16,8 @@ const {
 const {
     getPatientDetails,
     getServicesData,
-    labTestList
+    labTestList,
+    consultingPatientList
 } = require('../../controllers/consultant/conRead')
 
 const {
@@ -33,6 +34,7 @@ router.post('/api/consultant/proceed-to-labtest',auth,proceedToLabtest)
 router.post('/api/consultant/proceed-to-pharmacy',auth,proceedToPharmacy)
 router.post('/api/consultant/get-services-data',auth,getServicesData)
 router.post('/api/consultant/labTest-list',auth,labTestList)
+router.post('/api/consultant/get-consulting-patients',auth,consultingPatientList)
 
 
 module.exports = router;

@@ -14,6 +14,6 @@ const ConsultPatientShema = mongoose.Schema({
     timestamps: true
 });
 
-const ConsultPatient = mongoose.model('ConsultPatient', ConsultPatientShema)
+const ConsultingPatient = mongoose.model('ConsultPatient', ConsultPatientShema)
 
-module.exports = ConsultPatient;
+module.exports = ConsultingPatient;

@@ -11,7 +11,8 @@ const {
     getReport,
     getPatientDetails,
     getDrugDetails,
-    getTransaction
+    getTransaction,
+    getBillingPatients
 } = require("../../controllers/accountant/accRead")
 const {
     editTransaction
@@ -32,5 +33,5 @@ router.post('/api/accountant/get-transaction',auth,getTransaction)
 router.post('/api/accountant/delete-transaction',auth,deleteTransaction)
 router.post('/api/accountant/upload-report',auth,uploadReport)
 router.post('/api/accountant/get-report',auth,getReport)
-
+router.post('/api/accountant/get-billing-patients',auth,getBillingPatients)
 module.exports = router;

@@ -10,7 +10,8 @@ const {
 
 const  {
     getPatientDetails,
-    getServiceDetails
+    getServiceDetails,
+    getLabTestPatients
 } = require('../../controllers/laboratory/labRead')
 const  {
     uploadReport,
@@ -23,6 +24,7 @@ router.post('/api/lab-technician/get-service-details',auth,getServiceDetails)
 router.post('/api/lab-technician/proceed-to-consultant',auth,proceedToConsultant)
 router.post('/api/lab-technician/proceed-to-pharmacy',auth,proceedToPharmacy)
 router.post('/api/lab-technician/upload-lab-details',auth,uploadLabDetails)
+router.post('/api/lab-technician/get-labtest-patients',auth,getLabTestPatients)
 
 
 module.exports = router;

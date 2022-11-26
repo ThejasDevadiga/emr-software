@@ -6,7 +6,8 @@ dotenv.config();
 const {
     getPatientDetails,
     getAvailableDrug,
-    getDrugDetails
+    getDrugDetails,
+    getPharmacyPatientList
 } = require('../../controllers/pharmacy/phmRead')
 const {
     proceedToBilling,
@@ -22,5 +23,6 @@ router.post('/api/pharmacy/get-drug-details',auth,getDrugDetails)
 router.post('/api/pharmacy/proceedToBilling',auth,proceedToBilling)
 router.post('/api/pharmacy/update-drug-details',auth,updateDrugDetails)
 router.post('/api/pharmacy/delete-drug-details',auth, deleteDrugDetails)
+router.post('/api/pharmacy/get-pharmacy-patient-list',auth,getPharmacyPatientList)
 
 module.exports = router;
