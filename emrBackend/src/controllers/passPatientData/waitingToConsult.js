@@ -2,43 +2,29 @@ const WaitingSchema = require('../../models/Patient/waitingPatientList')
 const ConsultPatient = require('../../models/Patient/ConsultPatientList')
 const generateToken = require('../../utils/generateToken')
 const asyncHandler = require("express-async-handler");
-const updatePatientStatus = require('../../controllers/passPatientData/PatientStatus')
+const updatePatientStatus = require('./PatientStatus')
+
 const passWaitingToConsult = asyncHandler(async(req,res) =>{  
-  try{          
+           
   const {
         requestedId,
         PatientId,
     } = req.body;
-    if (!requestedId){
-        return res.status(400).json({
-            acknowledged : true,
-            message : 'Requested id doesnt exists',
-            token : generateToken(requestedId)
-        })
+    if (!requestedId && !PatientId){
+      throw new Error("Requested id or Patient id doesnt exists")
     }
+    try{ 
     const findPatient = await WaitingSchema.findOne({PatientID:PatientId},{'_id':0});
     if (!findPatient) { 
-      res.status(403).json({
-        acknowledged : true,
-        message : 'Patient data not found!',
-        token : generateToken(requestedId)
-      })
+      throw new Error("Patient data not found!")
     }
       const insertedResult = await ConsultPatient.create({PatientID:PatientId,Status:"Consulting"}) 
        if (!insertedResult) {
-         res.status(403).json({
-          acknowledged : true,
-          message : 'Error occured while Inserting the data to Consultantlist',
-          token : generateToken(requestedId)
-        })
+         throw new Error("Error occured while Inserting the data to Consultantlist")
       }
       const Deleteresult = await WaitingSchema.deleteOne({PatientID:PatientId})
         if (!Deleteresult) {
-          res.status(403).json({
-            acknowledged : true,
-            message : 'Error occured while Deleting the data from Waiting list',
-            token : generateToken(requestedId)
-          })
+          throw new Error("Error occured while Deleting the data to Waiting list")
         }
             if (updatePatientStatus(PatientId,"Consulting")){ 
             res.status(200).json({
@@ -48,11 +34,7 @@ const passWaitingToConsult = asyncHandler(async(req,res) =>{
         })
             }
             else {
-            res.status(403).json({
-              acknowledged : true,
-              message : 'Error occured while Updating the data in Waiting list',
-              token : generateToken(requestedId)
-            })
+              throw new Error("Error occured while Updating the data in Patient Records")
           }
 
 }catch(err){

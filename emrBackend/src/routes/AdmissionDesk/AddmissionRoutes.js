@@ -29,5 +29,5 @@ router.post('/api/admission-desk/available-doctor',auth, availableDoctor)
 router.post('/api/admission-desk/appointments-list',auth, getAppointmentsList)
 router.post('/api/admission-desk/get-Employees-Data',auth, getEmployeesData)
 router.post('/api/admission-desk/schedule-patient',auth, schedulePatient)
-router.post('/api/admission-desk/pass-waiting-patient-consultant',auth, passWaitingToConsult)
+router.post('/api/admission-desk/proceed-patient-consultant',auth, passWaitingToConsult)
 module.exports = router;

@@ -13,9 +13,10 @@ module.exports = (req, res, next) => {
     const decodedToken = jwt.verify(token, "EMRSOFTWARE", { algorithms: ["HS256"] });
     // console.log("Decoded token : ",decodedToken);
     const userId = decodedToken.id;
-    // console.log("ID : ",req.body.id);
-    if (req.body.userId && req.body.requestedId !== userId) {
-      // console.log("ID : ", req.body.id);
+    // console.log("ID : ",req.body.requestedId);
+    // console.log("ID : ", userId);
+console.log("Requested ")
+    if (req.body.requestedId && req.body.requestedId !== userId) {
       // console.log("Authentication Unsuccessfull!");
       throw "Invalid user ID";
     } else {

@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const AccountantPatientShema = mongoose.Schema({
+const BillingPatientList = mongoose.Schema({
     PatientID:{
         type:String,
         required:true,
@@ -14,6 +14,6 @@ const AccountantPatientShema = mongoose.Schema({
         timestamps: true
     })
 
-const AccountPatientList = mongoose.model('AccountantPatientList', AccountantPatientShema)
+const BillingPatientLists = mongoose.model('BillingPatientList', BillingPatientList)
 
-module.exports = AccountPatientList;
+module.exports = BillingPatientLists;

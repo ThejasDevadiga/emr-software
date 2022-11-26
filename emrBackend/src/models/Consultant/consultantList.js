@@ -19,6 +19,6 @@ const ConsultantList = mongoose.Schema({
 });
 
 
-const PatientDocumentsList = mongoose.model('PatientDocumentList', PatientDocumentList)
+const ConssultantList = mongoose.model('ConsultantList', ConsultantList)
 
-module.exports = PatientDocumentsList;
+module.exports = ConssultantList;

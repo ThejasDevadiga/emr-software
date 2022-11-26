@@ -29,7 +29,7 @@ const getPatientData = asyncHandler(async (req, res) => {
             message:"Patient not found"})
     }
     try {
-        const result = await PatientShema.findOne({filter},{projection})
+        const result = await PatientShema.find({filter},{projection})
         if (result){
             res.status(200).json({
                 acknowledged: true,
