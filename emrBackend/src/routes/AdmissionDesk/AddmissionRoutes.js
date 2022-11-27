@@ -31,4 +31,5 @@ router.get('/api/admission-desk/appointments-list',auth, getAppointmentsList)
 router.get('/api/admission-desk/get-Employees-Data',auth, getEmployeesData)
 router.post('/api/admission-desk/schedule-patient',auth, schedulePatient)
 router.post('/api/admission-desk/proceed-patient-consultant',auth, passWaitingToConsult)
+
 module.exports = router;

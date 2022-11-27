@@ -2,7 +2,7 @@ const jwt = require("jsonwebtoken");
 const dotenv = require("dotenv");
 dotenv.config();
 
-module.exports = (req, res, next) => {
+const authFileUpload = (req) => {
   try {
      if (req.headers.authorization==undefined) {
       throw new Error("Authentication failed!");
@@ -23,19 +23,16 @@ console.log("Requested ")
       throw new Error("Invalid requesting id")
     } else {
       //  console.log("Authentication Successfull!");
-      next();
+      return true
     }
   } catch (e) {
     if (e instanceof jwt.TokenExpiredError) {
       //   console.log("Expired token used!");
-      res.status(400).json({
-        error: "Token expired!",
-      });
+      return "Token expired"
     } else {
-      //  console.log("ERROR : ",e);
-      res.status(400).json({
-        error: e.message,
-      });
+      return e.message;
     }
+    
   }
 };
+module.exports  = authFileUpload

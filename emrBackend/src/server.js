@@ -4,6 +4,7 @@ const connectDB = require("./config/db");
 const cors = require("cors");
 const Grid = require("gridfs-stream");
 const mongoose = require("mongoose");
+const auth = require('./middlewares/authMiddleware')
 
 
 
@@ -49,7 +50,7 @@ app.use('/',PharmacyRoutes)
 app.use('/',AppointmentRoutes)
 app.use('/',LaboratoryRoutes)
 
-app.get("/file/:filename", async (req, res) => {
+app.get("/file/:filename",auth, async (req, res) => {
     try {
         // console.log(req.params.filename);
         const file = await gfs.files.findOne({ filename: req.params.filename });
@@ -66,7 +67,7 @@ app.get("/file/:filename", async (req, res) => {
     }
 });
 
-app.delete("/file/:filename", async (req, res) => {
+app.delete("/file/:filename",auth, async (req, res) => {
     try {
         await gfs.files.deleteOne({ filename: req.params.filename });
         res.send("success");
