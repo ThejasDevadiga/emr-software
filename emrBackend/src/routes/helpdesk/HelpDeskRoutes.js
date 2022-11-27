@@ -16,13 +16,13 @@ const {
 
 } = require('../../controllers/helpdesk/hlpRead')
 
-router.post('/api/help-desk/patient-count',auth, getPatientCount)
-router.post('/api/help-desk/bed-count',auth, getBedCount)
-router.post('/api/help-desk/available-bed',auth, getAvaililablebed)
-router.post('/api/help-desk/available-services',auth, availableServices)
-router.post('/api/help-desk/available-doctor',auth, availableDoctor)
-router.post('/api/help-desk/appointments-list',auth, getAppointmentsList)
-router.post('/api/help-desk/get-Employees-Data',auth, getEmployeesData)
+router.get('/api/help-desk/patient-count',auth, getPatientCount)
+router.get('/api/help-desk/bed-count',auth, getBedCount)
+router.get('/api/help-desk/available-bed',auth, getAvaililablebed)
+router.get('/api/help-desk/available-services',auth, availableServices)
+router.get('/api/help-desk/available-doctor',auth, availableDoctor)
+router.get('/api/help-desk/appointments-list',auth, getAppointmentsList)
+router.get('/api/help-desk/get-Employees-Data',auth, getEmployeesData)
 
 
 module.exports = router;

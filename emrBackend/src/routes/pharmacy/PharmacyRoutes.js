@@ -17,12 +17,12 @@ const {
     updateDrugDetails
 } = require('../../controllers/pharmacy/phmUpdate')
 
-router.post('/api/pharmacy/patient-details',auth,getPatientDetails)
-router.post('/api/pharmacy/drug-available',auth,getAvailableDrug)
-router.post('/api/pharmacy/get-drug-details',auth,getDrugDetails)
+router.get('/api/pharmacy/patient-details',auth,getPatientDetails)
+router.get('/api/pharmacy/drug-available',auth,getAvailableDrug)
+router.get('/api/pharmacy/get-drug-details',auth,getDrugDetails)
 router.post('/api/pharmacy/proceedToBilling',auth,proceedToBilling)
-router.post('/api/pharmacy/update-drug-details',auth,updateDrugDetails)
-router.post('/api/pharmacy/delete-drug-details',auth, deleteDrugDetails)
-router.post('/api/pharmacy/get-pharmacy-patient-list',auth,getPharmacyPatientList)
+router.put('/api/pharmacy/update-drug-details',auth,updateDrugDetails)
+router.delete('/api/pharmacy/delete-drug-details',auth, deleteDrugDetails)
+router.get('/api/pharmacy/get-pharmacy-patient-list',auth,getPharmacyPatientList)
 
 module.exports = router;

@@ -33,7 +33,7 @@ const insertEmployeeData = asyncHandler(async (req, res) => {
     } = req.body;
     const findEmployee = await EmployeeShema.findOne({EmployeeId});
     if (findEmployee) {
-      res.status(403).json({
+      res.status(400).json({
         acknowledged : true,
         message : 'Employee already exists',
         token : generateToken(requestedId)

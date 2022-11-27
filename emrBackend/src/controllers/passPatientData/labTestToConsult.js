@@ -19,7 +19,7 @@ if (!requestedId){
 }
 const findPatient = await Labpatient.findOne({PatientID:PatientId},{'_id':0});
 if (!findPatient) { 
-  res.status(403).json({
+  res.status(400).json({
     acknowledged : true,
     message : 'Patient data not found!',
     token : generateToken(requestedId)
@@ -28,7 +28,7 @@ if (!findPatient) {
 else{
   const insertedResult = await ConsultPatient.create({PatientID:PatientId,Status:"Consulting"}) 
    if (!insertedResult) {
-     res.status(403).json({
+     res.status(400).json({
       acknowledged : true,
       message : 'Error occured while Inserting the data to Consultantlist',
       token : generateToken(requestedId)
@@ -37,7 +37,7 @@ else{
   else{
      const result = await Labpatient.deleteOne({PatientID:PatientId})
     if (!result) {
-      res.status(403).json({
+      res.status(400).json({
         acknowledged : true,
         message : 'Error occured while Deleting the data from Waiting list',
         token : generateToken(requestedId)
