@@ -4,9 +4,12 @@ dotenv.config();
 
 module.exports = (req, res, next) => {
   try {
-   // console.log("Request from :", req.headers.authorization);
-    if (req.headers.authorization == undefined) {
+   console.log("Request body :", req.body);
+    if (req.headers.authorization==undefined) {
       throw new Error("Authentication failed!");
+    }
+    if (req.body.requestedId==undefined){
+      throw new Error("Auth :Requested id is not defined");
     }
     const token = req.headers.authorization.split(" ")[0];
     // console.log("Token :",token);
@@ -16,9 +19,9 @@ module.exports = (req, res, next) => {
     // console.log("ID : ",req.body.requestedId);
     // console.log("ID : ", userId);
 console.log("Requested ")
-    if (req.body.requestedId && req.body.requestedId !== userId) {
+    if ( req.body.requestedId !== userId) {
       // console.log("Authentication Unsuccessfull!");
-      throw "Invalid user ID";
+      throw new Error("Invalid requesting id")
     } else {
       //  console.log("Authentication Successfull!");
       next();
@@ -32,7 +35,7 @@ console.log("Requested ")
     } else {
       //  console.log("ERROR : ",e);
       res.status(400).json({
-        error: "Invalid request!",
+        error: e.message,
       });
     }
   }

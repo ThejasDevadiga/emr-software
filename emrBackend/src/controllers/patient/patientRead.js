@@ -1,7 +1,7 @@
 const waitingPatients = require('../../models/Patient/waitingPatientList')
 const generateToken = require('../../utils/generateToken')
 const asyncHandler = require("express-async-handler");
-
+const patientData = require('../../models/Patient/PatientDataSchema')
 
 const getWaitingPatientData  = asyncHandler(async (req, res, next) => {
     const {requestedId} = req.body.requestedId;
@@ -44,36 +44,31 @@ const getPatientCount  = asyncHandler(async (req, res, next) => {
 })
 
 const getPatientData = asyncHandler(async (req, res) => {
-    const {requestedId} = req.body.requestedId;
-    const {filter,projection} = req.body;
-    if (!filter && !projection) {
-        res.status(400).json({
-            acknowledged: true,
-            token:generateToken(PatientId),
-            message:"Patient not found"})
+    console.log(req.body);
+    const {requestedId,filter,projection} = req.body;
+    if (!requestedId && !filter && !projection) {
+        throw new Error(" Requesting Id, Filter, projections are  required")
     }
     try {
-        const result = await PatientShema.find({filter},{projection})
-        if (result){
+        const result = await patientData.find({filter},{projection})
+        if (result ==[]){
+            throw   new Error("No data found ")
+        }
+        else if (result){
             res.status(200).json({
                 acknowledged: true,
                 data: result,
                 token:generateToken(requestedId)
             })
         }
-        
         else{
-            res.status(400).json({
-                acknowledged: true,
-                data: null,
-                token:generateToken(requestedId)
-        })
+           throw new Error("Error while finding the patientData")
         }
     }
     catch (error) {
-        res.status(500).json({
+        res.status(400).json({
             acknowledged: true,
-            data: null,
+            message: error.message,
             token:generateToken(requestedId)
         })
     }

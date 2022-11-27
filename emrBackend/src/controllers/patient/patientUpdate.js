@@ -28,7 +28,7 @@ const updatePatientData = asyncHandler(async (req, res, next) => {
             data: "Patient not found!",
             token:generateToken(requestedId)
         })
-    }
+    } 
 
     else{
         const result = await PatientShema.updateOne(
@@ -50,7 +50,7 @@ const updatePatientData = asyncHandler(async (req, res, next) => {
                 })
             }
         else{
-            res.status(500).json({
+            res.status(400).json({
                 acknowledged: false,
                 message: "Error while updating data",
                 token:generateToken(requestedId)

@@ -29,7 +29,7 @@ const updateEmployeeData = asyncHandler(async (req, res, next) => {
                 })
             }
         else{
-            res.status(500).json({
+            res.status(400).json({
                 acknowledged: false,
                 message: "Error while updating data",
                 token:generateToken(requestedId)

@@ -21,7 +21,7 @@ const {passWaitingToConsult} = require('../../controllers/passPatientData/waitin
 router.post('/api/admission-desk/insert-patient-data',auth, insertPatientData)
 router.put('/api/admission-desk/update-patient-data',auth, updatePatientData)
 router.delete('/api/admission-desk/delete-patient-data',auth, deletePatientData)
-router.get('/api/admission-desk/get-patient-data',auth, getPatientData)
+router.post('/api/admission-desk/get-patient-data',auth, getPatientData)
 router.get('/api/admission-desk/bed-count',auth, getBedCount)
 router.get('/api/admission-desk/get-waiting-patient-data',auth, getWaitingPatientData)
 router.get('/api/admission-desk/available-bed',auth, getAvaililablebed)

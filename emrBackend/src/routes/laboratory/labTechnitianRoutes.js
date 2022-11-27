@@ -24,7 +24,7 @@ router.get('/api/lab-technician/get-service-details',auth,getServiceDetails)
 router.post('/api/lab-technician/proceed-to-consultant',auth,proceedToConsultant)
 router.post('/api/lab-technician/proceed-to-pharmacy',auth,proceedToPharmacy)
 router.put('/api/lab-technician/upload-lab-details',auth,uploadLabDetails)
-router.put('/api/lab-technician/get-labtest-patients',auth,getLabTestPatients)
+router.get('/api/lab-technician/get-labtest-patients',auth,getLabTestPatients)
 
 
 module.exports = router;

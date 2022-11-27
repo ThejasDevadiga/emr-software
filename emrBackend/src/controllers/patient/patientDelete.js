@@ -37,7 +37,7 @@ const deletePatientData = asyncHandler(async (req, res) => {
             }
         }
         catch(err){
-            res.status(500).json({
+            res.status(400).json({
                 acknowledged: true,
                 token:generateToken(requestedId),
                 message:err.message})

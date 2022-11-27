@@ -29,7 +29,7 @@ const readEmployeeData = asyncHandler(async (req, res) => {
         }
     }
     catch (error) {
-        res.status(500).json({
+        res.status(400).json({
             acknowledged: true,
             data: null,
             token:generateToken(requestedId)
