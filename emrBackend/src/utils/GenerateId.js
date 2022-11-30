@@ -25,7 +25,7 @@ const GenerateId = (name)=>{
         second = `0${second}`
     }
       
-    return `AYUR${day}${month}${year}${name}${hour}${minute}-${second}`;
+    return `AYUR${day}${month}${year}-${name}-${hour}${minute}-${second}`;
 }
 module.exports = GenerateId
  

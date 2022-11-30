@@ -15,8 +15,8 @@ const authFileUpload = (req) => {
     const decodedToken = jwt.verify(token, "EMRSOFTWARE", { algorithms: ["HS256"] });
     // console.log("Decoded token : ",decodedToken);
     const userId = decodedToken.id;
-    // console.log("ID : ",req.body.requestedId);
-    // console.log("ID : ", userId);
+    // console.log("ID : ",req.body.requestedId)
+    // console.log("ID : ", userId)
 console.log("Requested ")
     if ( req.body.requestedId !== userId) {
       // console.log("Authentication Unsuccessfull!");
@@ -32,7 +32,6 @@ console.log("Requested ")
     } else {
       return e.message;
     }
-    
   }
 };
 module.exports  = authFileUpload

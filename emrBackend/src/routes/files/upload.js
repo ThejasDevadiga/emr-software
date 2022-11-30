@@ -8,12 +8,10 @@ const authFileUpload = require("../../middlewares/fileUploadAuth")
 
 router.post("/upload", upload.single("files"),asyncHandler( async (req, res,next) => {
     try{
-        
        if(authFileUpload(req) !==true){
         throw new Error("Authentication failed")
        }
-     console.log(req.body.requestedId);
-    if (req.file === undefined ) {
+     if (req.file === undefined ) {
         throw new Error("No files were uploaded")
     }
     const imgUrl = `http://localhost:5000/file/${req.file.filename}`;
@@ -21,7 +19,7 @@ router.post("/upload", upload.single("files"),asyncHandler( async (req, res,next
         acknowledged : true,
         generateToken : "TOken",
         url:imgUrl
-    });
+    })
     } catch (err) {
         return res.status(400).json({
             message: err.message,

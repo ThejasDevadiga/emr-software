@@ -31,9 +31,8 @@ conn.once("open", function () {
         bucketName: 'Documents'
       });
     gfs = Grid(conn.db, mongoose.mongo);
-    gfs.collection("Documents");
 });
- 
+
 app.use(express.urlencoded({ extended: true }));
 
 app.use(express.json());
@@ -50,32 +49,29 @@ app.use('/',PharmacyRoutes)
 app.use('/',AppointmentRoutes)
 app.use('/',LaboratoryRoutes)
 
-app.get("/file/:filename",auth, async (req, res) => {
+app.get("/api/files/:filename",auth, async (req, res) => {
     try {
-        // console.log(req.params.filename);
+        gfs.collection("Documents")
+        gridfsBucket.bucketName = req.body.bucketName
         const file = await gfs.files.findOne({ filename: req.params.filename });
         console.log(file);
         const readStream =  gridfsBucket.openDownloadStream(file._id);
         readStream.pipe(res);
     } catch (error) {
-        if (error.isInstanceOf(MongoRuntimeError)){
             res.status(400).send({
-                message: "File not found",
-            });
-        } 
-        res.send({error:error.message});
+                message: error.message,
+            });  
     }
 });
-
-app.delete("/file/:filename",auth, async (req, res) => {
-    try {
-        await gfs.files.deleteOne({ filename: req.params.filename });
-        res.send("success");
-    } catch (error) {
-        console.log(error);
-        res.send("An error occured.");
-    }
-});
+// app.delete("/file/:filename",auth, async (req, res) => {
+//     try {
+//         await gfs.files.deleteOne({ filename: req.params.filename });
+//         res.send("success");
+//     } catch (error) {
+//         console.log(error);
+//         res.send("An error occured.");
+//     }
+// });
 
 app.use(notFound);
 

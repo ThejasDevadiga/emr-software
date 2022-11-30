@@ -3,6 +3,9 @@ const generateToken = require('../../utils/generateToken')
 const asyncHandler = require("express-async-handler");
 const patientData = require('../../models/Patient/PatientDataSchema')
 
+const mongoose = require("mongoose");
+const Grid = require("gridfs-stream");
+
 const getWaitingPatientData  = asyncHandler(async (req, res, next) => {
     const {requestedId} = req.body.requestedId;
     const {filter,projection} = req.body;
@@ -44,7 +47,7 @@ const getPatientCount  = asyncHandler(async (req, res, next) => {
 })
 
 const getPatientData = asyncHandler(async (req, res) => {
-    console.log(req.body);
+     
     const {requestedId,filter,projection} = req.body;
     if (!requestedId && !filter && !projection) {
         throw new Error(" Requesting Id, Filter, projections are  required")
@@ -73,9 +76,36 @@ const getPatientData = asyncHandler(async (req, res) => {
         })
     }
 })
+const getPatientDocument = asyncHandler(async(req,res,next)=>{
+    // try{
+//     let PatientDocgfs,PatientDocgridfsBucket;
+//     const conn = mongoose.connection;
+//     conn.once("open", function () {
+//         PatientDocgridfsBucket = new mongoose.mongo.GridFSBucket(conn.db, {
+//         bucketName: 'PatientDocuments'
+//       });
+//       PatientDocgfs = Grid(conn.db, mongoose.mongo);
+//       PatientDocgfs.collection("PatientDocuments");
+//       console.log("gfs",PatientDocgfs);
+// });
+// console.log("gfs",PatientDocgfs);
+        
+// const file = await PatientDocgfs.files.findOne({ filename: req.params.filename });
+//         console.log(file);
+//         const readStream =  PatientDocgridfsBucket.openDownloadStream(file._id);
+//         readStream.pipe(res);
 
+//     } catch (error) {
+        
+//             res.status(400).send({
+//                 message: error.message,
+//             });  
+    // }
+
+    })
 module.exports = {getPatientData,
   getPatientCount,
-  getWaitingPatientData
+  getWaitingPatientData,
+  getPatientDocument
 }
 

@@ -1,17 +1,27 @@
 const mongoose = require('mongoose');
 const PatientDocumentList = mongoose.Schema({
-    PatientID:{
+    DocumentID:{
         type:String,
         required:true,
         unique:true
     },
-    Adhar:{
-        AdharNumber:{
-            type:Number,
-            required:true,
-        },
+    PatientId:{
+        type:String,
+        required:true,
     },
-
+    DocumentName:{
+            type:String,
+            required:true,
+    },
+    DocumentUrl:{
+        type:String,
+        required:true,
+    },
+    DocumentType:{
+        type:String,
+        required:true,
+        default:"Image",
+    }
 },
 {
     timestamps: true,

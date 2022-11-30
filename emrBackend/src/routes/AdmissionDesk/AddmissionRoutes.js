@@ -2,9 +2,9 @@
 const router = express.Router()
 const auth = require('../../middlewares/authMiddleware')
 const deletePatientData= require('../../controllers/patient/patientDelete')
-const {getPatientData,getWaitingPatientData}= require('../../controllers/patient/patientRead')
-const updatePatientData= require('../../controllers/patient/patientUpdate')
-const insertPatientData= require('../../controllers/patient/patientInsert')
+const {getPatientData,getWaitingPatientData,getPatientDocument}= require('../../controllers/patient/patientRead')
+const {updatePatientData,uploadPatientDocument}= require('../../controllers/patient/patientUpdate')
+const {insertPatientData}= require('../../controllers/patient/patientInsert')
 const {
     getBedCount,
     getAvaililablebed,
@@ -15,11 +15,13 @@ const {
     schedulePatient
 } = require('../../controllers/Hospital/hospRead')
 const {passWaitingToConsult} = require('../../controllers/passPatientData/waitingToConsult')
-
+const uploader = require('../../middlewares/patientDocuments')
 
 
 router.post('/api/admission-desk/insert-patient-data',auth, insertPatientData)
 router.put('/api/admission-desk/update-patient-data',auth, updatePatientData)
+router.post("/api/admission-desk/upload-patient-documents",uploader.single("files"),uploadPatientDocument)
+router.get("/api/admission-desk/get-patient-documents/:filename",auth,getPatientDocument)
 router.delete('/api/admission-desk/delete-patient-data',auth, deletePatientData)
 router.post('/api/admission-desk/get-patient-data',auth, getPatientData)
 router.get('/api/admission-desk/bed-count',auth, getBedCount)

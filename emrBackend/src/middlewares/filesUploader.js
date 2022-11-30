@@ -19,9 +19,6 @@ const storage =  GridFsStorage({
             filename: `AYURVAS--${Date.now()}-${file.originalname}`,
         };
     },
-    text:(req,text)=>{
-        console.log("TEXT",text);
-    }
 });
 
 

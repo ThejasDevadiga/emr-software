@@ -90,6 +90,9 @@ const patientShema = mongoose.Schema({
             default: ''
         }
     },
+    Documents:{
+        type:Array
+    }
 
 },
 {

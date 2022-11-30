@@ -4,7 +4,7 @@ const WaitingPatientList = require('../../models/Patient/waitingPatientList')
 const generateId = require('../../utils/GenerateId')
 const generateToken = require('../../utils/generateToken')
 const asyncHandler = require("express-async-handler");
-
+const authFileUpload = require('../../middlewares/fileUploadAuth')
 
 const insertPatientData = asyncHandler(async (req, res) => {
   const requestedId = req.body
@@ -52,10 +52,10 @@ const insertPatientData = asyncHandler(async (req, res) => {
             Country:Country,
             Zip:Zip
         },
-        Documents:{
-            AdharNumber:AdharNumber,
-            BloodGroup:BloodGroup,
-        },
+        // Documents:{
+        //     AdharNumber:AdharNumber,
+        //     BloodGroup:BloodGroup,
+        // },
         Disease:{
             DiseaseName:DiseaseName,
             Category:Category,
@@ -75,7 +75,6 @@ const insertPatientData = asyncHandler(async (req, res) => {
          if (!insertedResult) {
             const deletePatient = await PatientDetails.deleteOne({PatientID:result.PatientID})
             throw new Error("Error occured while Inserting the data to Waitinglist" )
-          
          }
          else{      
             res.status(201).json({
@@ -98,4 +97,6 @@ const insertPatientData = asyncHandler(async (req, res) => {
       })
     }
 })
-module.exports = insertPatientData;
+
+
+module.exports = {insertPatientData};
