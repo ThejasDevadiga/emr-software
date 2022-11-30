@@ -15,7 +15,7 @@ const {
     schedulePatient
 } = require('../../controllers/Hospital/hospRead')
 const {passWaitingToConsult} = require('../../controllers/passPatientData/waitingToConsult')
-const uploader = require('../../middlewares/patientDocuments')
+const uploader = require('../../middlewares/filesUploader')
 
 
 router.post('/api/admission-desk/insert-patient-data',auth, insertPatientData)

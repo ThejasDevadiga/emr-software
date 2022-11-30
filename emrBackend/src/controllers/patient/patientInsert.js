@@ -1,6 +1,5 @@
 const PatientDetails = require('../../models/Patient/PatientDataSchema')
 const WaitingPatientList = require('../../models/Patient/waitingPatientList')
-
 const generateId = require('../../utils/GenerateId')
 const generateToken = require('../../utils/generateToken')
 const asyncHandler = require("express-async-handler");
@@ -52,10 +51,10 @@ const insertPatientData = asyncHandler(async (req, res) => {
             Country:Country,
             Zip:Zip
         },
-        // Documents:{
-        //     AdharNumber:AdharNumber,
-        //     BloodGroup:BloodGroup,
-        // },
+        Documents:{
+            AdharNumber:AdharNumber,
+            BloodGroup:BloodGroup,
+        },
         Disease:{
             DiseaseName:DiseaseName,
             Category:Category,
@@ -64,7 +63,6 @@ const insertPatientData = asyncHandler(async (req, res) => {
         }
     });
     if (result) {
-    
       const findPatient = await WaitingPatientList.findOne({PatientID:result.PatientID},{'_id':0});
       if (findPatient) { 
         throw new Error( "Patient already exists in WaitingPatientList"

@@ -11,8 +11,7 @@ const authFileUpload = require('../../middlewares/authMiddlewares')
 //     })
 //   })
 const generateId = require('../../utils/GenerateId')
- 
-  
+
 const updatePatientData = asyncHandler(async (req, res, next) => {
     const {
         requestedId,
@@ -33,8 +32,8 @@ const updatePatientData = asyncHandler(async (req, res, next) => {
     } 
     const updatedBasic = Object.assign(Findresult.Basic,updateBasic)
     const updatedDisease = Object.assign(Findresult.Disease,updateDisease)
-    const updatedDocument = Object.assign(Findresult.Documents,updateDocument)
-   
+    var UpdatedDocs = Object.values(Findresult.Documents)
+    UpdatedDocs.push(updateDocument)
         const Updateresult = await PatientShema.updateOne(
                                                      {PatientID:PatientId},
                                                     {
@@ -42,7 +41,7 @@ const updatePatientData = asyncHandler(async (req, res, next) => {
                                                             {
                                                                 Basic:updatedBasic,
                                                                 Disease:updatedDisease,
-                                                                Documents:updatedDocument
+                                                                Documents:UpdatedDocs
                                                             }
                                                     })
         
@@ -60,7 +59,6 @@ const updatePatientData = asyncHandler(async (req, res, next) => {
                 token:generateToken(requestedId)
                 })
         }
-    
 }
     catch(err){
         res.status(400).json({
@@ -73,7 +71,7 @@ const updatePatientData = asyncHandler(async (req, res, next) => {
 
 const uploadPatientDocument =  asyncHandler(async(req,res,next)=>{
     try{
-      
+
       const authresult = authFileUpload(req)
       if(authresult !==true){
        throw new Error(authresult)
