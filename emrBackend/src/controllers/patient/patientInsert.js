@@ -3,7 +3,7 @@ const WaitingPatientList = require('../../models/Patient/waitingPatientList')
 const generateId = require('../../utils/GenerateId')
 const generateToken = require('../../utils/generateToken')
 const asyncHandler = require("express-async-handler");
-const authFileUpload = require('../../middlewares/fileUploadAuth')
+const authFileUpload = require('../../middlewares/filesUploader')
 
 const insertPatientData = asyncHandler(async (req, res) => {
   const requestedId = req.body
@@ -81,7 +81,7 @@ const insertPatientData = asyncHandler(async (req, res) => {
             message:"Data inserted successfully",
             token:generateToken(requestedId)
           });
-        }
+        } 
       }
     } else {
       throw new Error("Error occured while Inserting the data to PatientDetails")

@@ -1,10 +1,9 @@
 const express = require("express");
 const router = express.Router();
-const upload = require("../../middlewares/uploadFiles");
+const upload = require("../../middlewares/filesUploader");
 const generateToken = require("../../utils/generateToken");
-const auth = require('../../middlewares/authMiddleware')
 const asyncHandler = require("express-async-handler");
-const authFileUpload = require("../../middlewares/fileUploadAuth")
+const authFileUpload = require("../../middlewares/authMiddlewares")
 
 router.post("/upload", upload.single("files"),asyncHandler( async (req, res,next) => {
     try{
