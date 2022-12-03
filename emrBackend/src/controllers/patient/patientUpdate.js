@@ -45,19 +45,15 @@ const updatePatientData = asyncHandler(async (req, res, next) => {
                                                             }
                                                     })
         
-                                                    if(Updateresult){
+        if(Updateresult){
             res.status(201).json({
                 acknowledged: true,
-                PatientId: result.PatientId,
+                PatientId: Updateresult.PatientId,
                 token:generateToken(requestedId)
                 })
             }
         else{
-            res.status(400).json({
-                acknowledged: false,
-                message: "Error while updating data",
-                token:generateToken(requestedId)
-                })
+            throw new Error("Error while updating data")
         }
 }
     catch(err){

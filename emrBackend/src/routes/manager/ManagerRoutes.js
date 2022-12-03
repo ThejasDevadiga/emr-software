@@ -8,17 +8,18 @@ const {
     deletePatientDetails,
     deleteTransaction,
     deleteconsultantDetails,
-    deleteEmployeedetails
+    deleteEmployeeData
 
 } = require('../../controllers/manager/manDelete')
 
 const {
-    insertEmployeeDetails
+    insertEmployeeData
 } = require('../../controllers/manager/manInsert')
 
 
 const {
     getPatientDetails,
+    getEmployeeData,
     getTransaction,
     getConsultDetails,
     getEmployeeStatus
@@ -29,7 +30,7 @@ const {
     updatePatientDetails,
     updateTransaction,
     updateconsultantDetails,
-    updateEmployeedetails
+    updateEmployeeData
 } = require('../../controllers/manager/manUpdate')
 
 
@@ -42,9 +43,9 @@ router.delete('/api/manager/delete-transaction',auth,deleteTransaction)
 router.get('/api/manager/get-consultant-details',auth, getConsultDetails)
 router.put('/api/manager/update-consultant-details',auth,updateconsultantDetails)
 router.delete('/api/manager/delete-consultant-details',auth,deleteconsultantDetails)
-router.post('/api/manager/insert-employee-details',auth,insertEmployeeDetails)
-router.put('/api/manager/update-employee-details',auth,updateEmployeedetails)
-router.delete('/api/manager/delete-employee-details',auth,deleteEmployeedetails)
+router.post('/api/manager/insert-employee-details',auth,insertEmployeeData)
+router.put('/api/manager/update-employee-details',auth,updateEmployeeData)
+router.delete('/api/manager/delete-employee-details',auth,deleteEmployeeData)
 router.get('/api/manager/employee-status',auth,getEmployeeStatus)
-
+router.get('/api/manager/get-employee-details',auth,getEmployeeData)
 module.exports = router;

@@ -64,16 +64,17 @@ const employeeShema = mongoose.Schema({
             type: String,
             required: true,
         }, 
-    },
-    Documents:{
-        AdharNumber:{
-            type:Number,
-            required:true,
-        },
         BloodGroup:{
             type:String,
             required:true,
         },
+        AdharNumber:{
+            type:Number,
+            required:true,
+        },
+    },
+    Documents:{
+        type:Array,
     },
     Speciality:{
         Education:{
@@ -93,12 +94,12 @@ const employeeShema = mongoose.Schema({
             required:true,
         },
         Designation:{
-            type:Date,
+            type:String,
             required:true,
         },
         DateofJoin:{
             type:String,
-            required:Date(Date.now()).toString(),
+            default:Date(Date.now()).toString(),
         }
     },
     other:{
@@ -111,6 +112,6 @@ const employeeShema = mongoose.Schema({
 
 });
 
-const Employee = mongoose.model('Patient', employeeShema)
+const Employee = mongoose.model('Employee', employeeShema)
 
 module.exports = Employee;
