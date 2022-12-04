@@ -243,11 +243,11 @@
     font-size: 26px;
     font-weight: 600;
   }
-  @media (max-width: 420px) {
+  /* @media (min-width: 420px) {
     .sidebar.close .nav-links li .sub-menu {
       display: none;
     }
-  }
+  } */
 </style>
 </head>
 <body>
@@ -270,9 +270,9 @@
                 </div>
                 <ul class="sub-menu">
                     <li><a class="link_name" href="#">Patient</a></li>
-                    <li><a href="add_pateint.php">Pateint Add</a></li>
-                    <li><a href="list_pat.php">Patient Details</a></li>
-                    <li><a href="pat_rep.php">Patient Report</a></li>
+                    <li><a href="add_pateint.html">Pateint Add</a></li>
+                    <li><a href="list_pat.html">Patient Details</a></li>
+                    <li><a href="pat_rep.html">Patient Report</a></li>
                 </ul>
             </li>
             <li>
@@ -285,9 +285,9 @@
                 </div>
                 <ul class="sub-menu">
                     <li><a class="link_name" href="#">Doctor</a></li>
-                    <li><a href="add_doc.php">Add Doctor</a></li>
-                    <li><a href="fd_doctor.php">Find Doctor</a></li>
-                    <li><a href="doc_report.php">Doctor Report</a></li>
+                    <li><a href="add_doc.html">Add Doctor</a></li>
+                    <li><a href="fd_doctor.html">Find Doctor</a></li>
+                    <li><a href="doc_report.html">Doctor Report</a></li>
                 </ul>
             </li>
             <li>
@@ -300,14 +300,14 @@
                 </div>
                 <ul class="sub-menu">
                     <li><a class="link_name" href="#">Staff</a></li>
-                    <li><a href="add_staff.php">Add Staff</a></li>
-                    <li><a href="fd_staff.php">Find Staff</a></li>
-                    <li><a href="staff_det.php">Staff Details</a></li>
+                    <li><a href="add_staff.html">Add Staff</a></li>
+                    <li><a href="fd_staff.html">Find Staff</a></li>
+                    <li><a href="staff_det.html">Staff Details</a></li>
                 </ul>
             </li>
             <li>
                 <div class="iocn-link">
-                    <a href="set_UsrCred.php">
+                    <a href="set_UsrCred.html">
                         <i class="fas fa-flask"></i>
                         <span class="link_name">Laboratory</span>
                     </a>
@@ -315,10 +315,10 @@
                 </div>
                 <ul class="sub-menu">
                     <li><a class="link_name" href="#">Laboratory</a></li>
-                    <li><a href="add_labtech.php">add LabTechnician</a></li>
-                    <li><a href="list_labtechncn.php">LabTechnician List</a></li>
-                    <li><a href="rep_f_tech.php">Technician Report</a></li>
-                    <li><a href="rep_f_lab.php">Report of the Day</a></li>
+                    <li><a href="add_labtech.html">add LabTechnician</a></li>
+                    <li><a href="list_labtechncn.html">LabTechnician List</a></li>
+                    <li><a href="rep_f_tech.html">Technician Report</a></li>
+                    <li><a href="rep_f_lab.html">Report of the Day</a></li>
                 </ul>
             </li>
             <li>
@@ -331,29 +331,36 @@
                 </div>
                 <ul class="sub-menu">
                     <li><a class="link_name" href="#">Accounts</a></li>
-                    <li><a href="add_accntnt.php">Add accountant</a></li>
-                    <li><a href="tran_hist.php">Transactions</a></li>
-                    <li><a href="list_accountant.php">Accounts List</a></li>
-                    <li><a href="acntnt_detls.php">Accountant Details</a></li>
-                    <li><a href="rep_day.php">Report of the Day</a></li>
+                    <li><a href="add_accntnt.html">Add accountant</a></li>
+                    <li><a href="tran_hist.html">Transactions</a></li>
+                    <li><a href="list_accountant.html">Accounts List</a></li>
+                    <li><a href="acntnt_detls.html">Accountant Details</a></li>
+                    <li><a href="rep_day.html">Report of the Day</a></li>
                 </ul>
             </li>
             <!-- <li>
-                <a href="userReport.php">
+                <a href="userReport.html">
                   <i class="fas fa-cog"></i>
                     <span class="link_name">Settings</span>
                 </a>
                 <ul class="sub-menu blank">
-                    <li><a class="link_name" href="userReport.php">Settings</a></li>
+                    <li><a class="link_name" href="userReport.html">Settings</a></li>
                 </ul>
             </li> -->
            
             <li>
-                <div class="profile-details">
-                  <a href="">
-                    <i class="fas fa-cog"></i>
-                      <span class="link_name">Settings</span>
-                  </a>
+              <div class="iocn-link profile-details">
+              <a href="#">
+                <i class="fas fa-cog"></i>
+                  <span class="link_name">Settings</span>
+              </a>
+              <i class="fas fa-angle-down arrow"></i>
+          </div>
+          <ul class="sub-menu">
+              <li><a class="link_name" href="#">Settings</a></li> 
+          </ul>
+                <div class="">
+                  
                 </div>
             </li>
         </ul>

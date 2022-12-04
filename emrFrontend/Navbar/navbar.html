@@ -15,7 +15,6 @@
       height: 4rem;
       color: aliceblue;
       display: flex;
-
     }
     .profile-image{
       width:3rem;
@@ -32,11 +31,38 @@
       font-size: 35px;
       color: #141221;
     }
+    .profile{
+      display: flex;
+      flex-direction: row;
+    }
+
+    h3{
+      font-size: 17px;
+      
+      margin:15px;
+    }
+    h1{
+        font-size: 25px;
+      }
+
+    @media screen and (max-width:1000px) {
+      .navbar{
+        flex-direction: column;
+      }
+      h1{
+        font-size: 25px;
+      }
+      
+    }
 </style>
 <body>
       <nav class="navbar"><h1></h1><h1>AYURVAS</h1>
-      <div class="profile-image">
-        <i class="fa-solid fa-user"></i>    
-        </div></nav>
+        <div class="profile">
+          <h3>PROFILE NAME</h3>
+          <div class="profile-image">
+           <i class="fa-solid fa-user arrow"></i>    
+            </div>
+        </div>
+       </nav>
 </body>
 </html>
