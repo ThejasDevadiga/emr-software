@@ -1,0 +1,33 @@
+.home-page{
+    background-color:transparent;
+    height: 91%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+}
+
+.left-section{
+    height: 100%;
+    width:30%;
+    background-color:rgb(84, 96, 137);
+    color: aliceblue;
+}
+
+.right-section{
+    height: 100%;
+    width:30%;
+    background-color:rgb(70, 72, 76);
+    color: aliceblue;
+
+}
+
+.middle-section{
+    height: 100%;
+    width:40%;
+    background-color:rgb(50, 52, 60);
+    color: aliceblue;
+}
+
+
+
