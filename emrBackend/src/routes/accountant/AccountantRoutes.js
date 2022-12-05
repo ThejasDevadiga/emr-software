@@ -1,19 +1,23 @@
 const express = require('express');
 const router = express.Router()
 const dotenv = require('dotenv');
+
 const auth = require('../../middlewares/authMiddleware')
 dotenv.config();
+
 const {
     deleteTransaction,
     deletePatientDetails
 } = require("../../controllers/accountant/accDelete")
+
 const {
     getReport,
-    getPatientDetails,
+    
     getDrugDetails,
     getTransaction,
     getBillingPatients
 } = require("../../controllers/accountant/accRead")
+const { getPatientData} = require("../../controllers/patient/patientRead")
 const {
     editTransaction
 } = require("../../controllers/accountant/accUpdate")
@@ -24,8 +28,7 @@ const{
 } = require("../../controllers/accountant/accInsert")
 
 
-router.get('/api/accountant/patient-details',auth,getPatientDetails)
-router.delete('/api/accountant/delete-patient',auth,deletePatientDetails)
+router.get('/api/accountant/patient-details',auth,getPatientData)//
 router.get('/api/accountant/drug-details',auth,getDrugDetails)
 router.put('/api/accountant/upload-transaction',auth,uploadTransaction)
 router.put('/api/accountant/edit-transaction',auth,editTransaction)

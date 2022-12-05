@@ -21,6 +21,11 @@ const getPatientDetails  = asyncHandler(async (req, res, next) => {
 
 
 const getDrugDetails  = asyncHandler(async (req, res, next) => {
+    const filter = req.body.filter 
+    const projection = req.body.projection
+    if (filter  && projection ){
+        
+    }
     res.status(200).json({
         acknowledged : true,
         message : 'Data Added Successfully',
