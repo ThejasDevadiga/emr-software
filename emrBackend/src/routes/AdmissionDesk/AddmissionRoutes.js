@@ -1,7 +1,7 @@
   const express = require('express');
 const router = express.Router()
 const auth = require('../../middlewares/authMiddleware')
-const deletePatientData= require('../../controllers/patient/patientDelete')
+const [deletePatientData,proceedWaitingToConsult]= require('../../controllers/patient/patientDelete')
 const {getPatientData,getWaitingPatientData,getPatientDocument}= require('../../controllers/patient/patientRead')
 const {updatePatientData,uploadPatientDocument}= require('../../controllers/patient/patientUpdate')
 const {insertPatientData}= require('../../controllers/patient/patientInsert')
@@ -14,24 +14,23 @@ const {
     getEmployeesData,
     schedulePatient
 } = require('../../controllers/Hospital/hospRead')
-const {passWaitingToConsult} = require('../../controllers/passPatientData/waitingToConsult')
 const uploader = require('../../middlewares/filesUploader')
 
 
-router.post('/api/admission-desk/insert-patient-data',auth, insertPatientData)
-router.put('/api/admission-desk/update-patient-data',auth, updatePatientData)
-router.post("/api/admission-desk/upload-patient-documents",uploader.single("files"),uploadPatientDocument)
-router.get("/api/admission-desk/get-patient-documents/:filename",auth,getPatientDocument)
-router.delete('/api/admission-desk/delete-patient-data',auth, deletePatientData)
-router.post('/api/admission-desk/get-patient-data',auth, getPatientData)
-router.get('/api/admission-desk/bed-count',auth, getBedCount)
-router.get('/api/admission-desk/get-waiting-patient-data',auth, getWaitingPatientData)
-router.get('/api/admission-desk/available-bed',auth, getAvaililablebed)
-router.get('/api/admission-desk/available-services',auth, availableServices)
-router.get('/api/admission-desk/available-doctor',auth, availableDoctor)
-router.get('/api/admission-desk/appointments-list',auth, getAppointmentsList)
-router.get('/api/admission-desk/get-Employees-Data',auth, getEmployeesData)
-router.post('/api/admission-desk/schedule-patient',auth, schedulePatient)
-router.post('/api/admission-desk/proceed-patient-consultant',auth, passWaitingToConsult)
+router.post('/api/admission/insert-patient-data',auth, insertPatientData)//Done
+router.put('/api/admission/update-patient-data',auth, updatePatientData)//DOne
+router.post("/api/admission/upload-patient-documents",uploader.single("files"),uploadPatientDocument)//Done
+router.get("/api/admission/get-patient-documents/:filename",auth,getPatientDocument)//Pending
+router.delete('/api/admission/delete-patient-data',auth, deletePatientData)//Done
+router.post('/api/admission/get-patient-data',auth, getPatientData)//Done
+router.get('/api/admission/bed-count',auth, getBedCount)//None
+router.get('/api/admission/get-waiting-patient-data',auth, getWaitingPatientData)//Done
+router.get('/api/admission/available-bed',auth, getAvaililablebed)//None
+router.get('/api/admission/available-services',auth, availableServices)//None
+router.get('/api/admission/available-doctor',auth, availableDoctor)//None
+router.get('/api/admission/appointments-list',auth, getAppointmentsList)//None
+router.get('/api/admission/get-Employees-Data',auth, getEmployeesData)//None
+router.post('/api/admission/schedule-patient',auth, schedulePatient)//None
+router.post('/api/admission/proceed-patient-consultant',auth, proceedWaitingToConsult)//Done
 
 module.exports = router;

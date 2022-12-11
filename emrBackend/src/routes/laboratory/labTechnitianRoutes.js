@@ -18,13 +18,13 @@ const  {
     uploadLabDetails
 } = require('../../controllers/laboratory/labInsert')
 
-router.get('/api/lab-technician/patient-details',auth,getPatientDetails)
-router.put('/api/lab-technician/upload-report',auth,uploadReport)
-router.get('/api/lab-technician/get-service-details',auth,getServiceDetails)
-router.post('/api/lab-technician/proceed-to-consultant',auth,proceedToConsultant)
-router.post('/api/lab-technician/proceed-to-pharmacy',auth,proceedToPharmacy)
-router.put('/api/lab-technician/upload-lab-details',auth,uploadLabDetails)
-router.get('/api/lab-technician/get-labtest-patients',auth,getLabTestPatients)
+router.get('/api/lab-technician/patient-details',auth,getPatientDetails)//None
+router.put('/api/lab-technician/upload-report',auth,uploadReport)//None
+router.get('/api/lab-technician/get-service-details',auth,getServiceDetails)//None
+router.post('/api/lab-technician/proceed-to-consultant',auth,proceedToConsultant)//Done
+router.post('/api/lab-technician/proceed-to-pharmacy',auth,proceedToPharmacy)//Done
+router.put('/api/lab-technician/upload-lab-details',auth,uploadLabDetails)//None
+router.get('/api/lab-technician/get-labtest-patients',auth,getLabTestPatients)//Done
 
 
 module.exports = router;

@@ -38,7 +38,7 @@ const getTransaction  = asyncHandler(async (req, res, next) => {
         token: generateToken(requestedId)
 })
 })
-const getConsultDetails  = asyncHandler(async (req, res, next) => {
+const getConsultReports  = asyncHandler(async (req, res, next) => {
     res.status(200).json({
         acknowledged : true,
         message : 'Data Added Successfully',
@@ -65,7 +65,7 @@ module.exports = {
     getPatientDetails,
     getEmployeeData,
     getTransaction,
-    getConsultDetails,
+    getConsultReports,
     getEmployeeStatus
 }
 

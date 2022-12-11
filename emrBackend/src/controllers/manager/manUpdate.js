@@ -18,13 +18,7 @@ const updateTransaction  = asyncHandler(async (req, res, next) => {
         token: generateToken(requestedId)
 })
 })
-const updateconsultantDetails  = asyncHandler(async (req, res, next) => {
-    res.status(200).json({
-        acknowledged : true,
-        message : 'Data Added Successfully',
-        token: generateToken(requestedId)
-})
-})
+
 
 const updateEmployeeData = asyncHandler(async (req, res, next) => {
     const {
@@ -79,6 +73,5 @@ const updateEmployeeData = asyncHandler(async (req, res, next) => {
 module.exports  = {
     updatePatientDetails,
     updateTransaction,
-    updateconsultantDetails,
     updateEmployeeData
 }
