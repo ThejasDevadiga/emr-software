@@ -19,7 +19,7 @@ const insertEmployeeData = asyncHandler(async (req, res) => {
     }
     try{
     const result = await EmployeeShema.create({
-        EmployeeId: generateId('PAT'),
+        EmployeeId: generateId('EMP'),
         Basic:Basic,
         Speciality:Speciality
     });

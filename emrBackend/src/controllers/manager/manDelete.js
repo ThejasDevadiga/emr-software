@@ -29,12 +29,16 @@ const deleteconsultantDetails  = asyncHandler(async (req, res, next) => {
 
 const deleteEmployeeData = asyncHandler(async (req, res) => {
     const {EmployeeId,requestedId} = req.body
-    if (!EmployeeId) {
-        
+    if (!EmployeeId) { 
         throw new Error("Employee not found")
     }
     else{
         try{
+            const findEmployee = await EmployeeShema.findOne({EmployeeId});
+
+        if (!findEmployee) {
+             throw new Error("Employee not found!")
+             }
             const result = await EmployeeShema.deleteOne({EmployeeId: EmployeeId})
             if (result){
                 res.status(200).json({

@@ -64,6 +64,10 @@ const deletePatientData = asyncHandler(async (req, res) => {
     }
     else{
         try{
+          const findPatient = await PatientShema.findOne({PatientID:PatientId},{'_id':0});
+        if (!findPatient) { 
+          throw new Error("Patient data not found!")
+        }
             const result = await PatientShema.deleteOne({PatientID: PatientId})
             if (result){
                 res.status(200).json({
