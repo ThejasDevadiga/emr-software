@@ -22,7 +22,7 @@ const getWaitingPatientData  = asyncHandler(async (req, res, next) => {
             })
         }
         else if (result.length==0){
-            throw new Error("No data found in the Labtesting list")
+            throw new Error("No data found in the waiting list")
         }
         
         else{

@@ -12,7 +12,7 @@ const AccountantRoutes = require("./routes/accountant/AccountantRoutes");
 const AdmissionRoutes = require("./routes/AdmissionDesk/AddmissionRoutes");
 const AppointmentRoutes = require("./routes/Appointment/AppointmentRoutes");
 const ConsultantRoutes = require("./routes/Consultant/ConsultantRoutes");
-const HelpDeskRoutes = require("./routes/helpdesk/HelpDeskRoutes");
+const HelpDeskRoutes = require("./routes/Receptionist/ReceptionistRoutes");
 const LaboratoryRoutes = require("./routes/laboratory/labTechnitianRoutes");
 const ManagerRoutes = require("./routes/manager/ManagerRoutes");
 const PharmacyRoutes = require("./routes/pharmacy/PharmacyRoutes");
@@ -54,7 +54,6 @@ app.get("/api/files/:filename",auth, async (req, res) => {
         gfs.collection("Documents")
         gridfsBucket.bucketName = req.body.bucketName
         const file = await gfs.files.findOne({ filename: req.params.filename });
-        console.log(file);
         const readStream =  gridfsBucket.openDownloadStream(file._id);
         readStream.pipe(res);
     } catch (error) {

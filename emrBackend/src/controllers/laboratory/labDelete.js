@@ -28,7 +28,7 @@ const proceedToConsultant  = asyncHandler(async (req, res, next) => {
         if (!deletedresult) {
           throw new Error("Error occured while Deleting the data from Lab test list")
         }
-        if (updatePatientStatus(PatientId,"Pharmacy")){ 
+        if (updatePatientStatus(PatientId,"Consultant")){ 
           res.status(200).json({
             acknowledged : true,
             message : 'Data Added Successfully',

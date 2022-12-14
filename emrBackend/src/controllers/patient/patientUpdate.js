@@ -22,7 +22,7 @@ const updatePatientData = asyncHandler(async (req, res, next) => {
     } = req.body
     try{
         const Findresult = await PatientShema.findOne({PatientID:PatientId})
-    console.log(Findresult);
+    // console.log(Findresult);
         if (!Findresult){
         res.status(400).json({
             acknowledged: false,
@@ -116,6 +116,7 @@ const uploadPatientDocument =  asyncHandler(async(req,res,next)=>{
     console.log(PatientDataresult);
    return res.send({
        acknowledged : true,
+       status :req.file.filename,
        generateToken : generateToken(requestedId),
        url:PatientDataresult.Documents
    })

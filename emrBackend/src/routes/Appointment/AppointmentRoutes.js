@@ -11,16 +11,10 @@ const {
 const { patientDetailsUpload} = require('../../controllers/Appointment/AppointmentInsert')
 
  
-router.put('/api/appointment/upload-patient-details',auth,patientDetailsUpload) //
-router.get('/api/appointment/services-available',auth,servicesAvailable)
-router.get('/api/appointment/available-consultant',auth,availableConsultant)
-router.get('/api/appointment/available-timings',auth,availableTimings)
-
-
-
-
-
-
+router.put('/api/appointment/upload-patient-details',auth,patientDetailsUpload) //None
+router.get('/api/appointment/services-available',auth,servicesAvailable)//None
+router.get('/api/appointment/available-consultant',auth,availableConsultant)//None
+router.get('/api/appointment/available-timings',auth,availableTimings)//None
 
 
 module.exports = router;

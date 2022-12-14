@@ -3,6 +3,7 @@ const WaitingSchema = require('../../models/Patient/waitingPatientList')
 const ConsultPatient = require('../../models/Patient/ConsultPatientList')
 const generateToken = require('../../utils/generateToken')
 const asyncHandler = require("express-async-handler");
+const updatePatientStatus = require('../passPatientData/PatientStatus')
 
 
 // const deletePatientData  = asyncHandler(async (req, res, next) => {

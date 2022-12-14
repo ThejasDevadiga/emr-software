@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const hospitalDetail = mongoose.Schema({
+const hospitalDetails = mongoose.Schema({
     EmployeeID:{
         type:String,
         required:true,
@@ -19,6 +19,6 @@ const hospitalDetail = mongoose.Schema({
 });
 
 
-const hospitalDetails = mongoose.model('hospitalDetails', hospitalDetail)
+const HospitalDetails = mongoose.model('hospitalDetails', hospitalDetails)
 
-module.exports = hospitalDetails;
+module.exports = HospitalDetails;
