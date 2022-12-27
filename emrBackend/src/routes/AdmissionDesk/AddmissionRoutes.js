@@ -6,7 +6,7 @@ const {getPatientData,getWaitingPatientData,getPatientDocument}= require('../../
 const {updatePatientData,uploadPatientDocument}= require('../../controllers/patient/patientUpdate')
 const {insertPatientData}= require('../../controllers/patient/patientInsert')
 const {
-    getBedCount,
+  getBedData,
     getAvaililablebed,
     availableServices,
     availableDoctor,
@@ -16,6 +16,7 @@ const {
 } = require('../../controllers/Hospital/hospRead')
 const uploader = require('../../middlewares/filesUploader')
 
+// const {getEmployeeData} = require("../../controllers/manager/manRead")
 
 router.post('/api/admission/insert-patient-data',auth, insertPatientData)//Done//tested
 router.put('/api/admission/update-patient-data',auth, updatePatientData)//DOne//tested
@@ -27,11 +28,11 @@ router.post('/api/admission/get-patient-data',auth, getPatientData)//Done//teste
 router.get('/api/admission/get-waiting-patient-data',auth, getWaitingPatientData)//Done//tested
 router.get('/api/admission/available-services',auth, availableServices)//Done//tested
 router.get('/api/admission/available-doctor',auth, availableDoctor)//Done//tested
-router.get('/api/admission/appointments-list',auth, getAppointmentsList)//None
-router.get('/api/admission/get-Employees-Data',auth, getEmployeesData)//None
+router.get('/api/admission/get-Employees-Data',auth, getEmployeesData)//Done//tested
+router.get('/api/admission/bed-data',auth, getBedData)//Done//tested
+router.get('/api/admission/available-bed',auth, getAvaililablebed)//Done//tested
+router.get('/api/admission/appointments-list',auth, getAppointmentsList)//Done//Tested
 router.post('/api/admission/schedule-patient',auth, schedulePatient)//None
-router.get('/api/admission/bed-count',auth, getBedCount)//None//
-router.get('/api/admission/available-bed',auth, getAvaililablebed)//None
 
 
 module.exports = router;

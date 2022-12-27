@@ -1,20 +1,68 @@
 const generateToken = require('../../utils/generateToken')
 const asyncHandler = require("express-async-handler");
 const labTestingPatients = require("../../models/Patient/LabtechnitianPatientList")
+const patientData = require('../../models/Patient/PatientDataSchema')
+const LabTests= require('../../models/LabTechnician/labTests')
 
 const getPatientDetails  = asyncHandler(async (req, res, next) => {
-    res.status(200).json({
-        acknowledged : true,
-        message : 'Data Added Successfully',
-        token: generateToken(requestedId)
-})
+   
+    const {requestedId,filter,projection} = req.body;
+    if (!requestedId && !filter && !projection) {
+        throw new Error(" Requesting Id, Filter, projections are  required")
+    }
+    try {
+        const result = await patientData.find({filter},{projection})
+        if (result ==[]){
+            throw   new Error("No data found ")
+        }
+        else if (result){
+            res.status(200).json({
+                acknowledged: true,
+                data: result,
+                token:generateToken(requestedId)
+            })
+        }
+        else{
+           throw new Error("Error while finding the patientData")
+        }
+    }
+    catch (error) {
+        res.status(400).json({
+            acknowledged: true,
+            message: error.message,
+            token:generateToken(requestedId)
+        })
+    }
 })
 const getServiceDetails  = asyncHandler(async (req, res, next) => {
-    res.status(200).json({
-        acknowledged : true,
-        message : 'Data Added Successfully',
-        token: generateToken(requestedId)
-})
+      
+    const {requestedId,filter,projection} = req.body;
+    if (!requestedId && !filter && !projection) {
+        throw new Error(" Requesting Id, Filter, projections are  required")
+    }
+    try {
+        const result = await LabTests.find({filter},{projection})
+        if (result ==[]){
+            throw   new Error("No data found ")
+        }
+        else if (result){
+            res.status(200).json({
+                acknowledged: true,
+                data: result,
+                token:generateToken(requestedId)
+            })
+        }
+        else{
+           throw new Error("Error while finding the Lab services")
+        }
+    }
+    catch (error) {
+        res.status(400).json({
+            acknowledged: true,
+            message: error.message,
+            token:generateToken(requestedId)
+        })
+    }
 })
 
 const getLabTestPatients = asyncHandler(async (req, res, next) => {

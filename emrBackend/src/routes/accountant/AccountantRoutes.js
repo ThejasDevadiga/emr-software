@@ -28,13 +28,14 @@ const{
 } = require("../../controllers/accountant/accInsert")
 
 
-router.get('/api/accountant/patient-details',auth,getPatientData)//
-router.get('/api/accountant/drug-details',auth,getDrugDetails)
-router.put('/api/accountant/upload-transaction',auth,uploadTransaction)
+router.get('/api/accountant/patient-details',auth,getPatientData)//Done//tested
+router.get('/api/accountant/drug-details',auth,getDrugDetails) //Done 
+router.put('/api/accountant/upload-transaction',auth,uploadTransaction)//Done
 router.put('/api/accountant/edit-transaction',auth,editTransaction)
-router.get('/api/accountant/get-transaction',auth,getTransaction)
-router.delete('/api/accountant/delete-transaction',auth,deleteTransaction)
+router.get('/api/accountant/get-transaction',auth,getTransaction)//Done
+router.delete('/api/accountant/delete-transaction',auth,deleteTransaction)//Done
 router.put('/api/accountant/upload-report',auth,uploadReport)
 router.get('/api/accountant/get-report',auth,getReport)
 router.get('/api/accountant/get-billing-patients',auth,getBillingPatients)
+
 module.exports = router;

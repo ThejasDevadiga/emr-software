@@ -18,9 +18,9 @@ const  {
     uploadLabDetails
 } = require('../../controllers/laboratory/labInsert')
 
-router.get('/api/lab-technician/patient-details',auth,getPatientDetails)//None
+router.get('/api/lab-technician/patient-details',auth,getPatientDetails)//Done
 router.put('/api/lab-technician/upload-report',auth,uploadReport)//None
-router.get('/api/lab-technician/get-service-details',auth,getServiceDetails)//None
+router.get('/api/lab-technician/get-service-details',auth,getServiceDetails)//Done
 router.post('/api/lab-technician/proceed-to-consultant',auth,proceedToConsultant)//Done
 router.post('/api/lab-technician/proceed-to-pharmacy',auth,proceedToPharmacy)//Done
 router.put('/api/lab-technician/upload-lab-details',auth,uploadLabDetails)//None
